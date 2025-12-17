@@ -1,0 +1,123 @@
+/* Reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Skip link */
+.skip-link {
+  position: absolute;
+  top: -40px;
+  left: 0;
+  background: #000;
+  color: #fff;
+  padding: 8px;
+  z-index: 100;
+}
+.skip-link:focus {
+  top: 0;
+}
+
+/* Sidebar (floating card style) */
+.sidebar {
+  position: fixed;
+  top: 20px;
+  left: 20px;
+  width: 220px;
+  height: calc(100% - 40px);
+  background-color: rgba(37, 78, 112, 0.95); /* Yale Blue with transparency */
+  color: #fff;
+  padding: 20px;
+  border-radius: 12px;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.3);
+  z-index: 1000;
+  backdrop-filter: blur(6px);
+  animation: floatIn 0.8s ease-out; /* smooth entry animation */
+}
+
+.sidebar h2 {
+  font-family: "digibop", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+  margin-bottom: 20px;
+  font-size: 2rem;
+  color: #F4F4F4;
+}
+
+.sidebar ul {
+  list-style: none;
+}
+
+.sidebar ul li {
+  margin: 15px 0;
+}
+
+.sidebar ul li a {
+  font-family: "acumin-pro", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+  color: #F4F4F4;
+  text-decoration: none;
+  font-size: 1.1rem;
+  transition: color 0.3s ease;
+}
+
+.sidebar ul li a:hover,
+.sidebar ul li a:focus {
+  color: #8EE3EF; /* Frosted Blue */
+  outline: none;
+}
+
+/* Content */
+.content {
+  margin-left: 260px;
+  padding: 20px;
+  background-color: #fff;
+}
+
+section {
+  min-height: 100vh;
+  padding: 40px 20px;
+  border-bottom: 1px solid #ddd;
+}
+
+/* Titles */
+h1, h2, h3 {
+  font-family: "digibop", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+  margin-bottom: 15px;
+  font-size: 3rem; /* larger titles */
+  color: #37718E;  /* Cerulean */
+}
+
+/* Body Text */
+section p {
+  font-family: "acumin-pro", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+  font-size: 1rem;
+  line-height: 1.6;
+  color: #333;
+}
+
+/* Highlight utility */
+.highlight {
+  background-color: #8EE3EF;
+  color: #254E70;
+  padding: 4px 8px;
+  border-radius: 4px;
+}
+
+/* Animation for sidebar */
+@keyframes floatIn {
+  from {
+    opacity: 0;
+    transform: translateX(-40px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
