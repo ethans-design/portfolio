@@ -1,49 +1,121 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Ethan's Portfolio</title>
-  <link rel="stylesheet" href="style.css">
-  <!-- Adobe Fonts -->
-  <link rel="stylesheet" href="https://use.typekit.net/kjc2rnh.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Ethan Saunders Portfolio</title>
+
+  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="https://use.typekit.net/kjc2rnh.css" />
 </head>
+
 <body>
-  <!-- Skip link for keyboard users -->
   <a href="#main-content" class="skip-link">Skip to main content</a>
 
-  <!-- Sidebar navigation -->
-  <nav class="sidebar" role="navigation" aria-label="Main menu">
-    <h2>My Portfolio</h2>
-    <ul>
-      <li><a href="#about">About Me</a></li>
-      <li><a href="#projects">Projects</a></li>
-      <li><a href="#skills">Skills</a></li>
-      <li><a href="#contact">Contact</a></li>
+  <!-- Sidebar -->
+  <nav class="sidebar" aria-label="Main menu">
+    <div class="sidebar-header">
+      <div class="logo-wrapper">
+        <img src="assets/EthanFace.png" alt="Ethan's logo" class="sidebar-logo" />
+      </div>
+      <h2 class="sidebar-title">Ethan Saunders</h2>
+    </div>
+
+    <ul class="sidebar-list">
+      <li><a href="#about" class="nav-link">about me</a></li>
+      <li><a href="#projects" class="nav-link">projects</a></li>
+      <li><a href="#skills" class="nav-link">skills</a></li>
     </ul>
+
+    <div class="sidebar-footer" aria-label="Social links">
+      <a class="footer-link" href="https://www.linkedin.com/in/ethan-saunders-913869354/" target="_blank" rel="noopener noreferrer">linkedin →</a>
+      <a class="footer-link" href="mailto:ethan@saunders.us">email →</a>
+    </div>
   </nav>
 
   <!-- Main content -->
   <main id="main-content" tabindex="-1" class="content">
-    <section id="about" aria-labelledby="about-heading">
-      <h1 id="about-heading">About Me</h1>
-      <p>Write a short introduction here...</p>
+
+    <!-- ABOUT -->
+    <section id="about">
+      <h1>about me</h1>
+
+      <div class="about-wrapper">
+        <div class="about-photo">
+          <img src="assets/DSC_0004.JPEG" alt="Photo of Ethan Saunders" />
+        </div>
+
+        <div class="about-text">
+          <p>
+            Hello! I'm Ethan Saunders, a student at the University of Colorado Boulder studying Creative Technology and Design. This includes coding, 3D modeling, graphic design, web design, and so much more. I went to high school in Laguna Beach for 2 years, and Jackson Hole for the other two. I love video games, working out, skiing, and spending time with my buddies. 
+            I want to become a game designer and developer some day, and I hope to bring back similar atmospheres that heavily stylized games had in the 2010s. Examples of this would be Dark Souls, Castle Crashers, and Borderlands. 
+          </p>
+        </div>
+      </div>
     </section>
 
-    <section id="projects" aria-labelledby="projects-heading">
-      <h1 id="projects-heading">Projects</h1>
-      <p>Showcase your work here...</p>
+    <!-- PROJECTS -->
+    <section id="projects">
+      <h1>projects</h1>
+
+      <div class="projects-group">
+        <h2 class="projects-subheading">graphic design</h2>
+
+        <div class="projects-grid">
+          <article class="project-card">
+            <button class="project-link" type="button">
+              <div class="project-media">
+                <img src="assets/can.png" alt="Project Can label design preview" />
+              </div>
+              <div class="project-body">
+                <h3>project can</h3>
+                <p>
+                  A can label design made to represent me.
+                </p>
+              </div>
+            </button>
+          </article>
+        </div>
+      </div>
+
+      <div class="projects-group">
+        <h2 class="projects-subheading">coding</h2>
+
+        <div class="projects-grid">
+          <article class="project-card">
+            <button class="project-link" type="button">
+              <div class="project-media">
+                <img src="assets/Screenshot 2025-12-17 150516.png" alt="Poké Finder preview" />
+              </div>
+              <div class="project-body">
+                <h3>poké finder</h3>
+                <p>API-driven Who's that Pokémon game.</p>
+              </div>
+            </button>
+          </article>
+        </div>
+
+        <!-- CTA button -->
+        <div class="project-cta">
+          <a class="project-btn" href="/Pokemon/wtp.html">play the game →</a>
+        </div>
+      </div>
     </section>
 
-    <section id="skills" aria-labelledby="skills-heading">
-      <h1 id="skills-heading">Skills</h1>
-      <p>List your skills here...</p>
-    </section>
+    <!-- SKILLS -->
+ <section id="skills">
+  <h1>skills</h1>
 
-    <section id="contact" aria-labelledby="contact-heading">
-      <h1 id="contact-heading">Contact</h1>
-      <p>Email: you@example.com</p>
-    </section>
+  <ul class="dashed-list">
+    <li>HTML, CSS, and JavaScript</li>
+    <li>Graphic design, layout, and typography</li>
+    <li>Accessibility-focused web development</li>
+    <li>Gaming achievements (Elden Ring 100%)</li>
+    <li>Sailing instructor for three summers</li>
+    <li>Consistent gym schedule</li>
+  </ul>
+</section>
+
   </main>
 
   <script src="script.js"></script>

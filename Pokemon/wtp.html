@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>who’s that pokémon?</title>
+  <link rel="stylesheet" href="wtp.css" />
+</head>
+
+<body>
+  <header class="topbar">
+    <div class="topbar-inner">
+      <h1>who’s that pokémon?</h1>
+      <a class="back" href="/Website/index.html">back</a>
+    </div>
+  </header>
+
+  <main class="container">
+    <section class="game">
+      <div class="screen">
+        <img id="pokeImg" alt="mystery pokémon" />
+      </div>
+
+      <div class="controls">
+        <!-- counter -->
+        <p class="score">correct: <span id="score">0</span></p>
+
+        <label for="guess">your guess</label>
+        <input id="guess" type="text" placeholder="pikachu…" autocomplete="off" />
+
+        <div class="btns">
+          <button id="newBtn" type="button">new</button>
+          <button id="checkBtn" type="button" disabled>check</button>
+          <button id="revealBtn" type="button" disabled>reveal</button>
+        </div>
+
+        <p id="msg" role="status" aria-live="polite"></p>
+      </div>
+    </section>
+  </main>
+
+  <script src="wtp.js"></script>
+</body>
+</html>
