@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Food Decider</title>
+  <link rel="stylesheet" href="food.css" />
+</head>
+<body>
+  <main class="app">
+        <section class="hero">
+        <h1>Food Finder</h1>
+        <p>Its always hard to pick, so I gotchu!</p>
+        </section>
+
+    <section class="card">
+        <label>
+        Mood
+        <select id="mood">
+            <option value="any">Anything</option>
+            <option value="comfort">Comfort Food</option>
+            <option value="healthy">Healthy</option>
+            <option value="adventurous">Adventurous</option>
+            <option value="safe">Safe Pick</option>
+        </select>
+        </label>
+
+      <label>
+        Situation
+        <select id="situation">
+          <option value="any">Anything</option>
+          <option value="quick">Quick Bite</option>
+          <option value="sitdown">Sit-Down</option>
+          <option value="date">Date Night</option>
+          <option value="group">Group Hangout</option>
+        </select>
+      </label>
+
+      <label>
+        Budget
+        <select id="budget">
+          <option value="any">Anything</option>
+          <option value="cheap">Cheap</option>
+          <option value="medium">Medium</option>
+          <option value="expensive">Expensive</option>
+        </select>
+      </label>
+
+      <button id="pickBtn">Pick My Food</button>
+    </section>
+
+    <section id="result" class="result hidden"></section>
+  </main>
+
+  <script src="food.js"></script>
+</body>
+</html>

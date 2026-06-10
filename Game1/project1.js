@@ -48,10 +48,10 @@ function wantsJump() { return keys["w"] || keys[" "] || keys["arrowup"]; }
 const MOVE_SPEED = 2.5;
 
 const GRAVITY = 0.42;
-const FALL_GRAVITY_MULT = 0.55;
+const FALL_GRAVITY_MULT = 0.05;
 const JUMP_VY = -7.2;
 const HOLD_GRAVITY_MULT = 0.23;
-const MAX_FALL_SPEED = 9.5;
+const MAX_FALL_SPEED = 5.5;
 
 const COYOTE_MS = 190;
 const JUMP_BUFFER_MS = 180;
@@ -69,7 +69,7 @@ const SWORD_HEIGHT = 24;
 const SWORD_DAMAGE = 5;
 
 // Enemy bullets
-const BULLET_SPEED = 5.5;
+const BULLET_SPEED = 2.5;
 const BULLET_R = 5;
 
 // =====================
