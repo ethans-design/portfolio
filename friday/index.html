@@ -68,17 +68,13 @@
         <div class="two-col">
           <div class="col-text">
             <p>
-              Most productivity tools optimize for output — tasks completed, time tracked, streaks kept.
-              Friday optimizes for <em>what actually matters</em>.
+              I got tired of AI tools that forget everything between conversations.
+              Friday holds your goals in context — so when you ask it to check your email,
+              it tells you what's actually relevant, not just what arrived.
             </p>
             <p>
-              You set your current goals. Friday holds them in context for every single conversation.
-              Check your email and it tells you which messages are relevant to your internship search —
-              not just what arrived. Add a task and it sorts by goal priority, not the order you thought of it.
-            </p>
-            <p>
-              The idea came from noticing that the most sophisticated AI tools still treat each
-              conversation as isolated. Friday doesn't forget what you're working toward.
+              Say "Friday" from anywhere and it's instant. No clicking, no opening apps.
+              It's just there.
             </p>
           </div>
           <div class="col-features">
@@ -86,28 +82,28 @@
               <div class="feature-icon">◎</div>
               <div>
                 <strong>goals-first system prompt</strong>
-                <p>active goals injected into every session — responses shaped by what matters now</p>
+                <p>your goals inject into every session so responses are always filtered through what matters</p>
               </div>
             </div>
             <div class="feature-block">
               <div class="feature-icon">◎</div>
               <div>
                 <strong>always-on voice</strong>
-                <p>persistent websocket eliminates the 2–3s connection delay on every wake word</p>
+                <p>persistent websocket — no delay on wake, conversation starts the moment it hears "friday"</p>
               </div>
             </div>
             <div class="feature-block">
               <div class="feature-icon">◎</div>
               <div>
                 <strong>mobile pwa</strong>
-                <p>cloudflare tunnel gives https in one command — mic unlocked, installable to home screen</p>
+                <p>cloudflare tunnel auto-starts on launch — https in seconds, installable to home screen</p>
               </div>
             </div>
             <div class="feature-block">
               <div class="feature-icon">◎</div>
               <div>
                 <strong>persistent memory</strong>
-                <p>facts extracted from each conversation, tied to active goals, carried forward</p>
+                <p>facts from each conversation carry forward, tied to active goals</p>
               </div>
             </div>
           </div>
@@ -126,13 +122,10 @@
             <div class="arch-num">01</div>
             <h3>shared mic queue</h3>
             <p>
-              Windows won't open the same audio device twice. The first version ran two streams —
-              one for Vosk (wake word, 16kHz) and one for OpenAI (24kHz) — and they silently conflicted.
+              Windows won't open the same audio device twice. My first version ran two separate streams and they silently conflicted — nothing worked and I had no idea why.
             </p>
             <p>
-              The fix: one <code>sd.RawInputStream</code> feeds a thread-safe queue.
-              The realtime loop reads from the queue and resamples on the fly using Python's
-              stdlib <code>audioop.ratecv</code>. No extra dependencies.
+              The fix was one <code>sd.RawInputStream</code> feeding a thread-safe queue, with the realtime loop resampling on the fly using <code>audioop.ratecv</code>.
             </p>
           </div>
 
@@ -140,13 +133,10 @@
             <div class="arch-num">02</div>
             <h3>always-on websocket</h3>
             <p>
-              Connecting to OpenAI's Realtime API takes 2–3 seconds. Opening and closing
-              a connection on every wake word makes the assistant feel sluggish.
+              Connecting to OpenAI's Realtime API takes 2–3 seconds. If Friday opened a new connection on every wake word it would feel broken.
             </p>
             <p>
-              Friday keeps the WebSocket open permanently. A <code>_conv_active</code> flag
-              controls whether audio flows — flipped instantly by wake word or hotkey.
-              The conversation starts the moment "Friday" is recognized.
+              Instead the connection stays open permanently. A flag flips when "Friday" is heard and audio starts flowing — the conversation is instant.
             </p>
           </div>
 
@@ -154,13 +144,10 @@
             <div class="arch-num">03</div>
             <h3>tool executor</h3>
             <p>
-              Long-running tools (email, calendar, smart home API calls) would block
-              the async event loop if called directly. A dedicated
-              <code>ThreadPoolExecutor</code> runs them off-loop so voice stays responsive.
+              Things like fetching email or hitting the Govee API are slow. Running them directly would freeze the voice session.
             </p>
             <p>
-              A <code>tool_running</code> flag suppresses the silence timer during
-              execution — so the session doesn't time out while Friday is fetching your calendar.
+              A <code>ThreadPoolExecutor</code> runs tools off the event loop, and a flag pauses the silence timer so the session doesn't die mid-tool-call.
             </p>
           </div>
 
@@ -168,12 +155,10 @@
             <div class="arch-num">04</div>
             <h3>https in one command</h3>
             <p>
-              Mobile browsers require HTTPS for microphone access. Instead of certificates
-              or a cloud server, Friday auto-starts a Cloudflare quick tunnel on launch.
+              Phone browsers block mic access without HTTPS. Setting up certificates is a pain, so Friday just auto-starts a Cloudflare tunnel on launch.
             </p>
             <p>
-              The tunnel URL is parsed from <code>cloudflared</code> stdout and printed
-              to the terminal within seconds. Open it on your phone — mic button unlocks.
+              The URL gets parsed from stdout and printed within a few seconds. Open it on your phone and the mic button works.
             </p>
           </div>
         </div>
