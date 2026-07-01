@@ -3,7 +3,20 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Ethan Saunders Portfolio</title>
+  <title>Ethan Saunders — Creative Technology &amp; Design</title>
+  <meta name="description" content="Portfolio of Ethan Saunders — Creative Technology and Design student at CU Boulder. Games, AI projects, and graphic design." />
+  <meta name="author" content="Ethan Saunders" />
+  <meta name="theme-color" content="#440f7c" />
+
+  <link rel="icon" type="image/png" href="assets/EthanFace.png" />
+
+  <!-- Social sharing -->
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://ethanlabs.co/" />
+  <meta property="og:title" content="Ethan Saunders — Creative Technology &amp; Design" />
+  <meta property="og:description" content="Games, AI projects, and graphic design by Ethan Saunders." />
+  <meta property="og:image" content="https://ethanlabs.co/assets/EthanFace.png" />
+  <meta name="twitter:card" content="summary" />
 
   <link rel="stylesheet" href="style.css" />
   <link rel="stylesheet" href="https://use.typekit.net/kjc2rnh.css" />
@@ -42,12 +55,12 @@
 
       <div class="about-wrapper">
         <div class="about-photo">
-          <img src="assets/DSC_0004.JPEG" alt="Photo of Ethan Saunders" />
+          <img src="assets/ethan-photo.jpg" alt="Photo of Ethan Saunders" />
         </div>
 
         <div class="about-text">
           <p>
-            I’m Ethan Saunders, a Creative Technology and Design student at the University of Colorado Boulder and an aspiring game designer and developer. I focus on coding, 3D modeling, and visual design, and I’m inspired by highly stylized, atmospheric games like Dark Souls, Castle Crashers, and Borderlands. Outside of games, I’m usually in the gym, on the mountain, or skating with friends.
+            I’m Ethan Saunders, a Creative Technology and Design student at the University of Colorado Boulder, and an aspiring game designer and developer. I focus on coding, 3D modeling, and visual design, and I’m inspired by highly stylized, atmospheric games like Dark Souls, Castle Crashers, and Borderlands. Outside of games, I’m usually in the gym, on the mountain, or skating with friends.
           </p>
         </div>
       </div>
@@ -62,22 +75,29 @@
         <h2 class="projects-subheading">graphic design</h2>
 
         <div class="projects-grid">
-          <article class="project-card">
-            <button class="project-link" type="button">
-              <div class="project-media">
-                <img src="assets/can.png" alt="Project Can label design preview" />
-              </div>
-              <div class="project-body">
-                <h3>project can</h3>
-                <p>A can label design made to represent me.</p>
-              </div>
-            </button>
-          </article>
+          <div class="project-stack">
+            <article class="project-card">
+              <button class="project-link lightbox-trigger" type="button" data-image="assets/can.png" data-caption="project can — label design">
+                <div class="project-media">
+                  <img src="assets/can.png" alt="Project Can label design preview" />
+                </div>
+                <div class="project-body">
+                  <h3>project can</h3>
+                  <p>A can label design made to represent me.</p>
+                </div>
+              </button>
+            </article>
+
+            <div class="project-cta">
+              <button class="project-btn lightbox-trigger" type="button" data-image="assets/can.png" data-caption="project can — label design">
+                view full design →
+              </button>
+            </div>
+          </div>
         </div>
       </div>
 
       <!-- Coding -->
- <!-- Coding -->
 <div class="projects-group">
   <h2 class="projects-subheading">coding</h2>
 
@@ -179,6 +199,7 @@
 
   </div>
 </div>
+    </section>
 
     <!-- SKILLS -->
     <section id="skills">
@@ -186,16 +207,29 @@
 
       <ul class="dashed-list">
         <li>HTML, CSS, and JavaScript</li>
-        <li>Python — asyncio, threading, WebSockets, REST APIs</li>
+        <li>Python — asyncio, threading, APIs</li>
         <li>AI integration — OpenAI Realtime API, tool use, system prompts</li>
         <li>Graphic design, layout, and typography</li>
         <li>Accessibility-focused web development</li>
-        <li>Progressive web apps (PWA), service workers, offline-first</li>
+        <li>Progressive web apps (PWA)</li>
         <li>Google APIs — OAuth2, Gmail, Calendar</li>
       </ul>
     </section>
 
+    <footer class="site-footer">
+      <p>© 2026 ethan saunders · designed &amp; built by me</p>
+    </footer>
+
   </main>
+
+  <!-- Lightbox -->
+  <div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="Image viewer" hidden>
+    <button class="lightbox-close" type="button" aria-label="Close image viewer">×</button>
+    <figure>
+      <img src="" alt="" />
+      <figcaption></figcaption>
+    </figure>
+  </div>
 
   <script src="script.js"></script>
 </body>
