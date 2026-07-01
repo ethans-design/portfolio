@@ -235,6 +235,65 @@ h3 { font-size: 1.6rem; }
   transform: scale(1.05);
 }
 
+/* Featured project */
+.featured-project {
+  margin-top: 32px;
+}
+
+.project-card--featured {
+  border-color: #ff0095;
+}
+
+.project-card--featured:hover {
+  box-shadow: 0 16px 40px rgba(255, 0, 149, 0.4);
+}
+
+.project-card--featured .project-body {
+  padding: 24px;
+}
+
+.project-card--featured h2 {
+  margin-bottom: 12px;
+}
+
+.featured-tag {
+  display: inline-block;
+  margin-bottom: 12px;
+  padding: 4px 12px;
+  border-radius: 999px;
+  background: #ff0095;
+  color: #fff;
+  font-family: "digibop", sans-serif;
+  font-size: 0.9rem;
+  text-transform: lowercase;
+}
+
+@media (min-width: 900px) {
+  .project-card--featured .project-link--anchor {
+    display: grid;
+    grid-template-columns: 1.3fr 1fr;
+    align-items: center;
+  }
+
+  .project-card--featured .project-media {
+    aspect-ratio: auto;
+    height: 100%;
+  }
+}
+
+/* Compact grid — smaller cards (graphic design) */
+.projects-grid--compact {
+  grid-template-columns: repeat(auto-fill, minmax(200px, 260px));
+}
+
+.projects-grid--compact .project-body {
+  padding: 14px;
+}
+
+.projects-grid--compact h3 {
+  font-size: 1.3rem;
+}
+
 /* CTA button */
 .project-cta {
   margin-top: 16px;
