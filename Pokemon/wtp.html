@@ -3,36 +3,65 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>who’s that pokémon?</title>
+  <title>poké finder — who’s that pokémon?</title>
+  <meta name="description" content="Who's That Pokémon? guessing game built on the PokéAPI. Pick your generations and build a streak." />
   <link rel="stylesheet" href="wtp.css" />
 </head>
 
 <body>
   <header class="topbar">
     <div class="topbar-inner">
-      <h1>who’s that pokémon?</h1>
-      <a class="back" href="../index.html">back</a>
-
+      <div class="brand">
+        <span class="pokeball" aria-hidden="true"></span>
+        <h1>poké finder</h1>
+      </div>
+      <a class="back" href="../index.html">← back to portfolio</a>
     </div>
   </header>
 
   <main class="container">
     <section class="game">
       <div class="screen">
-        <img id="pokeImg" alt="mystery pokémon" />
+        <img id="pokeImg" alt="mystery pokémon silhouette" />
       </div>
 
       <div class="controls">
-        <!-- counter -->
-        <p class="score">correct: <span id="score">0</span></p>
+        <div class="stats">
+          <div class="stat">
+            <span class="stat-label">streak</span>
+            <span class="stat-value" id="score">0</span>
+          </div>
+          <div class="stat">
+            <span class="stat-label">best</span>
+            <span class="stat-value" id="best">0</span>
+          </div>
+        </div>
+
+        <fieldset class="gens">
+          <legend>generations</legend>
+          <div class="gen-chips" id="genChips">
+            <button type="button" class="gen-chip gen-chip--all" id="genAll">all</button>
+            <button type="button" class="gen-chip" data-gen="1">1</button>
+            <button type="button" class="gen-chip" data-gen="2">2</button>
+            <button type="button" class="gen-chip" data-gen="3">3</button>
+            <button type="button" class="gen-chip" data-gen="4">4</button>
+            <button type="button" class="gen-chip" data-gen="5">5</button>
+            <button type="button" class="gen-chip" data-gen="6">6</button>
+            <button type="button" class="gen-chip" data-gen="7">7</button>
+            <button type="button" class="gen-chip" data-gen="8">8</button>
+            <button type="button" class="gen-chip" data-gen="9">9</button>
+          </div>
+        </fieldset>
 
         <label for="guess">your guess</label>
-        <input id="guess" type="text" placeholder="gengar…" autocomplete="off" />
+        <div class="guess-row">
+          <input id="guess" type="text" placeholder="gengar…" autocomplete="off" spellcheck="false" />
+          <button id="checkBtn" class="btn btn--primary" type="button" disabled>check</button>
+        </div>
 
         <div class="btns">
-          <button id="newBtn" type="button">new</button>
-          <button id="checkBtn" type="button" disabled>check</button>
-          <button id="revealBtn" type="button" disabled>reveal</button>
+          <button id="newBtn" class="btn" type="button">skip →</button>
+          <button id="revealBtn" class="btn btn--ghost" type="button" disabled>reveal</button>
         </div>
 
         <p id="msg" role="status" aria-live="polite"></p>
