@@ -1,18 +1,29 @@
-<!-- project1.html -->
 <!doctype html>
 <html lang="en">
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Project 1</title>
+  <title>cowboys with swords</title>
+  <meta name="description" content="A parry-based western platformer — deflect bullets back at outlaws and reach the golden flag." />
   <link rel="stylesheet" href="project1.css" />
 </head>
 <body>
+  <header class="topbar">
+    <div class="topbar-inner">
+      <h1>cowboys with swords</h1>
+      <a class="back" href="../index.html">← back to portfolio</a>
+    </div>
+  </header>
+
   <main class="wrap">
-    <canvas id="game" width="1280" height="720" aria-label="2D platformer"></canvas>
+    <canvas id="game" width="1280" height="720" aria-label="Cowboys with Swords — 2D platformer"></canvas>
     <div id="status" class="status">Loading…</div>
-    <div class="hint">Move: A/D • Jump: W/Space • Parry: J • Sword: K</div>
+    <div class="hint">
+      move: <b>a/d</b> · jump: <b>w/space</b> (hold for height) · drop through: <b>s</b> ·
+      parry: <b>j</b> · sword: <b>k</b> · restart: <b>r</b>
+    </div>
   </main>
+
   <script src="project1.js"></script>
 </body>
 </html>

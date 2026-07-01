@@ -4,35 +4,78 @@ html, body {
   padding: 0;
   background: #0b0e14;
   color: #eaeaea;
-  font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+  font-family: system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
+}
+
+.topbar {
+  background: #121728;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  padding: 14px 0;
+}
+
+.topbar-inner {
+  width: min(1280px, 92vw);
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+}
+
+h1 {
+  margin: 0;
+  font-size: 1.3rem;
+  font-weight: 800;
+  text-transform: lowercase;
+}
+
+.back {
+  color: rgba(255, 255, 255, 0.6);
+  text-decoration: none;
+  font-weight: 700;
+  font-size: 0.9rem;
+  padding: 8px 12px;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: 10px;
+  transition: color 0.2s, border-color 0.2s;
+  white-space: nowrap;
+}
+
+.back:hover {
+  color: #fff;
+  border-color: rgba(255, 205, 140, 0.8);
 }
 
 .wrap {
-  min-height: 100vh;
+  min-height: calc(100vh - 60px);
   display: grid;
   place-items: center;
+  align-content: center;
   gap: 10px;
   padding: 16px;
 }
 
 #game {
+  width: min(1280px, calc(100vw - 32px));
+  height: auto;
+  aspect-ratio: 16 / 9;
   border-radius: 14px;
-  box-shadow: 0 12px 40px rgba(0,0,0,0.45);
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.45);
   image-rendering: pixelated;
   image-rendering: crisp-edges;
   background: #0b0e14;
 }
 
 .status {
-  width: 1280px;
-  max-width: calc(100vw - 32px);
+  width: min(1280px, calc(100vw - 32px));
   opacity: 0.9;
   font-size: 14px;
 }
 
 .hint {
-  width: 1280px;
-  max-width: calc(100vw - 32px);
+  width: min(1280px, calc(100vw - 32px));
   opacity: 0.65;
   font-size: 13px;
 }
+
+.hint b { color: rgba(255, 205, 140, 0.9); }
