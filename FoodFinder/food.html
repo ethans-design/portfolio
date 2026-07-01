@@ -3,53 +3,95 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Food Decider</title>
+  <title>Food Finder — what should I eat?</title>
+  <meta name="description" content="Answer a few quick questions and get real food recommendations — what to eat, what to order, and actual restaurants near you." />
   <link rel="stylesheet" href="food.css" />
 </head>
 <body>
+  <header class="topbar">
+    <div class="topbar-inner">
+      <h1 class="brand">🍜 food finder</h1>
+      <a class="back" href="../index.html">← back to portfolio</a>
+    </div>
+  </header>
+
   <main class="app">
-        <section class="hero">
-        <h1>Food Finder</h1>
-        <p>Its always hard to pick, so I gotchu!</p>
-        </section>
-
-    <section class="card">
-        <label>
-        Mood
-        <select id="mood">
-            <option value="any">Anything</option>
-            <option value="comfort">Comfort Food</option>
-            <option value="healthy">Healthy</option>
-            <option value="adventurous">Adventurous</option>
-            <option value="safe">Safe Pick</option>
-        </select>
-        </label>
-
-      <label>
-        Situation
-        <select id="situation">
-          <option value="any">Anything</option>
-          <option value="quick">Quick Bite</option>
-          <option value="sitdown">Sit-Down</option>
-          <option value="date">Date Night</option>
-          <option value="group">Group Hangout</option>
-        </select>
-      </label>
-
-      <label>
-        Budget
-        <select id="budget">
-          <option value="any">Anything</option>
-          <option value="cheap">Cheap</option>
-          <option value="medium">Medium</option>
-          <option value="expensive">Expensive</option>
-        </select>
-      </label>
-
-      <button id="pickBtn">Pick My Food</button>
+    <section class="hero">
+      <h2>what should i eat?</h2>
+      <p>Answer a few quick questions — get real picks, what to order, and actual spots near you.</p>
     </section>
 
-    <section id="result" class="result hidden"></section>
+    <section class="card" aria-label="Preferences">
+      <div class="field">
+        <span class="field-label">meal <span class="auto-note" id="autoNote"></span></span>
+        <div class="chips" id="mealChips" role="group" aria-label="Meal">
+          <button type="button" class="chip" data-value="breakfast">🍳 breakfast</button>
+          <button type="button" class="chip" data-value="lunch">🥪 lunch</button>
+          <button type="button" class="chip" data-value="dinner">🍽️ dinner</button>
+          <button type="button" class="chip" data-value="latenight">🌙 late night</button>
+        </div>
+      </div>
+
+      <div class="field">
+        <span class="field-label">mood</span>
+        <div class="chips" id="moodChips" role="group" aria-label="Mood">
+          <button type="button" class="chip" data-value="any">🤷 surprise me</button>
+          <button type="button" class="chip" data-value="comfort">🛋️ comfort</button>
+          <button type="button" class="chip" data-value="healthy">🥗 healthy</button>
+          <button type="button" class="chip" data-value="adventurous">🌶️ adventurous</button>
+          <button type="button" class="chip" data-value="safe">🙂 safe pick</button>
+          <button type="button" class="chip" data-value="indulgent">🤤 treat myself</button>
+        </div>
+      </div>
+
+      <div class="field">
+        <span class="field-label">situation</span>
+        <div class="chips" id="situationChips" role="group" aria-label="Situation">
+          <button type="button" class="chip" data-value="any">🤷 whatever</button>
+          <button type="button" class="chip" data-value="quick">⚡ quick bite</button>
+          <button type="button" class="chip" data-value="sitdown">🪑 sit-down</button>
+          <button type="button" class="chip" data-value="date">💘 date</button>
+          <button type="button" class="chip" data-value="group">👥 group</button>
+          <button type="button" class="chip" data-value="solo">🎧 solo</button>
+          <button type="button" class="chip" data-value="takeout">🥡 takeout</button>
+        </div>
+      </div>
+
+      <div class="field-row">
+        <div class="field">
+          <span class="field-label">budget</span>
+          <div class="chips" id="budgetChips" role="group" aria-label="Budget">
+            <button type="button" class="chip" data-value="any">any</button>
+            <button type="button" class="chip" data-value="cheap">$</button>
+            <button type="button" class="chip" data-value="medium">$$</button>
+            <button type="button" class="chip" data-value="expensive">$$$</button>
+          </div>
+        </div>
+
+        <div class="field">
+          <span class="field-label">how hungry?</span>
+          <div class="chips" id="hungerChips" role="group" aria-label="Hunger">
+            <button type="button" class="chip" data-value="light">just peckish</button>
+            <button type="button" class="chip" data-value="normal">normal</button>
+            <button type="button" class="chip" data-value="starving">starving</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="field">
+        <span class="field-label">dietary needs <span class="field-hint">(pick any — these are guaranteed)</span></span>
+        <div class="chips" id="dietChips" role="group" aria-label="Dietary needs">
+          <button type="button" class="chip" data-value="vegetarian">🌱 vegetarian</button>
+          <button type="button" class="chip" data-value="vegan">🥕 vegan</button>
+          <button type="button" class="chip" data-value="glutenfree">🌾 gluten-free</button>
+          <button type="button" class="chip" data-value="halal">☪️ halal</button>
+        </div>
+      </div>
+
+      <button id="pickBtn" class="cta" type="button">find my food</button>
+    </section>
+
+    <section id="result" class="result hidden" aria-live="polite"></section>
   </main>
 
   <script src="food.js"></script>
