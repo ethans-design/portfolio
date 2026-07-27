@@ -4,6 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Friday — Ethan Saunders</title>
+  <meta name="description" content="Friday — a voice-first personal AI that filters your attention through your goals. Built in Python with the OpenAI Realtime API." />
   <link rel="stylesheet" href="friday.css" />
   <link rel="stylesheet" href="https://use.typekit.net/kjc2rnh.css" />
 </head>
@@ -11,11 +12,11 @@
 
   <a href="#main" class="skip-link">skip to content</a>
 
-  <!-- Back nav -->
+  <!-- Top nav -->
   <nav class="topbar">
-    <a href="/" class="back-link">← ethanlabs.co</a>
-    <div class="topbar-links">
-      <a href="https://github.com/ethans-design/friday" target="_blank" rel="noopener">github →</a>
+    <div class="wrap topbar-inner">
+      <a href="../index.html" class="nav-link">← back to portfolio</a>
+      <a href="https://github.com/ethans-design/friday" target="_blank" rel="noopener" class="nav-link">github →</a>
     </div>
   </nav>
 
@@ -23,183 +24,146 @@
 
     <!-- HERO -->
     <section class="hero">
-      <div class="hero-inner">
-        <div class="hero-tag">personal project — 2025</div>
-        <h1 class="hero-title">friday</h1>
-        <p class="hero-sub">
-          a voice-first personal AI that filters your attention through your goals
-        </p>
-        <div class="hero-chips">
-          <span class="chip">python</span>
-          <span class="chip">openai realtime api</span>
-          <span class="chip">websockets</span>
-          <span class="chip">pwa</span>
+      <div class="wrap hero-grid">
+        <div class="hero-text">
+          <p class="eyebrow">personal project — 2025</p>
+          <h1 class="hero-title">friday</h1>
+          <p class="hero-sub">
+            A voice-first personal AI that filters your attention through your goals.
+          </p>
+          <div class="chips">
+            <span class="chip">python</span>
+            <span class="chip">openai realtime api</span>
+            <span class="chip">websockets</span>
+            <span class="chip">pwa</span>
+          </div>
+          <a class="btn btn--primary" href="https://github.com/ethans-design/friday" target="_blank" rel="noopener">
+            view on github →
+          </a>
         </div>
-        <a class="hero-btn" href="https://github.com/ethans-design/friday" target="_blank" rel="noopener">
-          view on github →
-        </a>
-      </div>
 
-      <!-- Animated terminal preview -->
-      <div class="terminal">
-        <div class="terminal-bar">
-          <span class="dot red"></span>
-          <span class="dot yellow"></span>
-          <span class="dot green"></span>
-          <span class="terminal-title">friday_mk2.py</span>
-        </div>
-        <div class="terminal-body">
-          <div class="t-line"><span class="t-dim">$</span> python friday_mk2.py</div>
-          <div class="t-line t-fade-1">Loading Vosk wake word model...</div>
-          <div class="t-line t-fade-2">Friday Mk2 Online — always listening.</div>
-          <div class="t-line t-fade-3">&nbsp;</div>
-          <div class="t-line t-fade-4"><span class="t-green">Heard: friday</span></div>
-          <div class="t-line t-fade-5"><span class="t-cyan">--- Conversation started ---</span></div>
-          <div class="t-line t-fade-6"><span class="t-dim">[realtime]</span> Connected and ready.</div>
-          <div class="t-line t-fade-7 t-blink">▋</div>
+        <!-- Animated terminal -->
+        <div class="terminal">
+          <div class="terminal-bar">
+            <span class="dot red"></span>
+            <span class="dot yellow"></span>
+            <span class="dot green"></span>
+            <span class="terminal-title">friday_mk2.py</span>
+          </div>
+          <div class="terminal-body">
+            <div class="t-line"><span class="t-dim">$</span> python friday_mk2.py</div>
+            <div class="t-line t-fade-1">Loading Vosk wake word model...</div>
+            <div class="t-line t-fade-2">Friday Mk2 Online — always listening.</div>
+            <div class="t-line t-fade-3">&nbsp;</div>
+            <div class="t-line t-fade-4"><span class="t-green">Heard: friday</span></div>
+            <div class="t-line t-fade-5"><span class="t-cyan">--- Conversation started ---</span></div>
+            <div class="t-line t-fade-6"><span class="t-dim">[realtime]</span> Connected and ready.</div>
+            <div class="t-line t-fade-7 t-blink">▋</div>
+          </div>
         </div>
       </div>
     </section>
 
     <!-- WHAT IT IS -->
-    <section class="section" id="concept">
-      <div class="section-inner">
+    <section class="bordered" id="concept">
+      <div class="wrap">
         <h2>what it is</h2>
-        <div class="two-col">
-          <div class="col-text">
-            <p>
-              I got tired of AI tools that forget everything between conversations.
-              Friday holds your goals in context — so when you ask it to check your email,
-              it tells you what's actually relevant, not just what arrived.
-            </p>
-            <p>
-              Say "Friday" from anywhere and it's instant. No clicking, no opening apps.
-              It's just there.
-            </p>
+        <p class="lead">
+          I got tired of AI tools that forget everything between conversations. Friday holds your
+          goals in context — so when you ask it to check your email, it tells you what's actually
+          relevant, not just what arrived. Say “friday” from anywhere and it's instant. No clicking,
+          no opening apps.
+        </p>
+
+        <div class="feature-grid">
+          <div class="feature">
+            <h3>goals-first system prompt</h3>
+            <p>your goals inject into every session, so responses are always filtered through what matters</p>
           </div>
-          <div class="col-features">
-            <div class="feature-block">
-              <div class="feature-icon">◎</div>
-              <div>
-                <strong>goals-first system prompt</strong>
-                <p>your goals inject into every session so responses are always filtered through what matters</p>
-              </div>
-            </div>
-            <div class="feature-block">
-              <div class="feature-icon">◎</div>
-              <div>
-                <strong>always-on voice</strong>
-                <p>persistent websocket — no delay on wake, conversation starts the moment it hears "friday"</p>
-              </div>
-            </div>
-            <div class="feature-block">
-              <div class="feature-icon">◎</div>
-              <div>
-                <strong>mobile pwa</strong>
-                <p>cloudflare tunnel auto-starts on launch — https in seconds, installable to home screen</p>
-              </div>
-            </div>
-            <div class="feature-block">
-              <div class="feature-icon">◎</div>
-              <div>
-                <strong>persistent memory</strong>
-                <p>facts from each conversation carry forward, tied to active goals</p>
-              </div>
-            </div>
+          <div class="feature">
+            <h3>always-on voice</h3>
+            <p>a persistent websocket means no delay on wake — the conversation starts the moment it hears “friday”</p>
+          </div>
+          <div class="feature">
+            <h3>mobile pwa</h3>
+            <p>a cloudflare tunnel auto-starts on launch — https in seconds, installable to your home screen</p>
+          </div>
+          <div class="feature">
+            <h3>persistent memory</h3>
+            <p>facts from each conversation carry forward, tied to your active goals</p>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- ARCHITECTURE -->
-    <section class="section section--dark" id="architecture">
-      <div class="section-inner">
+    <!-- HOW IT WORKS -->
+    <section class="bordered" id="architecture">
+      <div class="wrap">
         <h2>how it works</h2>
-        <p class="section-lead">the interesting parts</p>
+        <p class="eyebrow eyebrow--lead">the interesting parts</p>
 
-        <div class="arch-grid">
-          <div class="arch-card">
-            <div class="arch-num">01</div>
+        <div class="cards">
+          <div class="card">
+            <div class="num">01</div>
             <h3>shared mic queue</h3>
             <p>
-              Windows won't open the same audio device twice. My first version ran two separate streams and they silently conflicted — nothing worked and I had no idea why.
+              Windows won't open the same audio device twice. My first version ran two separate
+              streams that silently conflicted — nothing worked and I had no idea why.
             </p>
             <p>
-              The fix was one <code>sd.RawInputStream</code> feeding a thread-safe queue, with the realtime loop resampling on the fly using <code>audioop.ratecv</code>.
+              The fix was one <code>sd.RawInputStream</code> feeding a thread-safe queue, with the
+              realtime loop resampling on the fly via <code>audioop.ratecv</code>.
             </p>
           </div>
 
-          <div class="arch-card">
-            <div class="arch-num">02</div>
+          <div class="card">
+            <div class="num">02</div>
             <h3>always-on websocket</h3>
             <p>
-              Connecting to OpenAI's Realtime API takes 2–3 seconds. If Friday opened a new connection on every wake word it would feel broken.
+              Connecting to OpenAI's Realtime API takes 2–3 seconds. Opening a new connection on
+              every wake word would feel broken.
             </p>
             <p>
-              Instead the connection stays open permanently. A flag flips when "Friday" is heard and audio starts flowing — the conversation is instant.
+              Instead the connection stays open permanently. A flag flips when “friday” is heard and
+              audio starts flowing — the conversation is instant.
             </p>
           </div>
 
-          <div class="arch-card">
-            <div class="arch-num">03</div>
+          <div class="card">
+            <div class="num">03</div>
             <h3>tool executor</h3>
             <p>
-              Things like fetching email or hitting the Govee API are slow. Running them directly would freeze the voice session.
+              Things like fetching email or hitting the Govee API are slow. Running them inline would
+              freeze the voice session.
             </p>
             <p>
-              A <code>ThreadPoolExecutor</code> runs tools off the event loop, and a flag pauses the silence timer so the session doesn't die mid-tool-call.
+              A <code>ThreadPoolExecutor</code> runs tools off the event loop, and a flag pauses the
+              silence timer so the session doesn't die mid-tool-call.
             </p>
           </div>
 
-          <div class="arch-card">
-            <div class="arch-num">04</div>
+          <div class="card">
+            <div class="num">04</div>
             <h3>https in one command</h3>
             <p>
-              Phone browsers block mic access without HTTPS. Setting up certificates is a pain, so Friday just auto-starts a Cloudflare tunnel on launch.
+              Phone browsers block mic access without HTTPS, and certificates are a pain. So Friday
+              just auto-starts a Cloudflare tunnel on launch.
             </p>
             <p>
-              The URL gets parsed from stdout and printed within a few seconds. Open it on your phone and the mic button works.
+              The URL is parsed from stdout within a few seconds. Open it on your phone and the mic
+              button works.
             </p>
           </div>
-        </div>
-
-        <!-- Architecture diagram -->
-        <div class="arch-diagram">
-          <pre class="arch-pre">
-┌─────────────────────────────────────────────────────────┐
-│                      friday_mk2.py                       │
-│                                                          │
-│  main thread                                             │
-│  ├── Vosk (16kHz) ──── wake word detection               │
-│  └── mic queue ─────────────────────────────────┐        │
-│                                                 │        │
-│  realtime thread                                │        │
-│  └── asyncio event loop                         │        │
-│      ├── send_audio ◄── queue.get() ◄───────────┘        │
-│      │   └── audioop.ratecv (16 → 24kHz)                 │
-│      │   └── WebSocket → OpenAI Realtime API             │
-│      ├── receive_events ── tool calls → ThreadPoolExecutor│
-│      └── watch_idle ── silence timeout                   │
-│                                                          │
-│  reminder thread ── checks every 30s → ntfy.sh          │
-└─────────────────────────────────────────────────────────┘
-         │ ws://localhost:8767
-         ▼
-┌─────────────┐       ┌──────────────────────────────────┐
-│  gui_mk2.py │       │  mobile pwa                      │
-│  ws hub     │◄─────►│  cloudflare https tunnel         │
-│  http :8080 │       │  hold-to-speak, installable      │
-└─────────────┘       └──────────────────────────────────┘</pre>
         </div>
       </div>
     </section>
 
     <!-- INTEGRATIONS -->
-    <section class="section" id="integrations">
-      <div class="section-inner">
+    <section class="bordered" id="integrations">
+      <div class="wrap">
         <h2>integrations</h2>
-        <div class="integrations-grid">
-          <div class="int-group">
+        <div class="int-grid">
+          <div class="int">
             <h3>communication</h3>
             <ul>
               <li>Gmail — read, search, reply, send</li>
@@ -207,15 +171,15 @@
               <li>Phone notifications via ntfy.sh</li>
             </ul>
           </div>
-          <div class="int-group">
+          <div class="int">
             <h3>environment</h3>
             <ul>
               <li>Spotify — play, skip, volume</li>
-              <li>Govee smart lights — on/off, color, brightness</li>
+              <li>Govee smart lights — color + brightness</li>
               <li>Weather — current + forecast</li>
             </ul>
           </div>
-          <div class="int-group">
+          <div class="int">
             <h3>information</h3>
             <ul>
               <li>Web search via DuckDuckGo</li>
@@ -223,12 +187,12 @@
               <li>Live sports scores — ESPN API</li>
             </ul>
           </div>
-          <div class="int-group">
+          <div class="int">
             <h3>productivity</h3>
             <ul>
-              <li>Goals system — persistent, priority-ranked</li>
+              <li>Goals — persistent, priority-ranked</li>
               <li>To-do list — sorted by goal alignment</li>
-              <li>Reminders — voice-set, fire as push notifications</li>
+              <li>Reminders — voice-set push notifications</li>
             </ul>
           </div>
         </div>
@@ -236,27 +200,27 @@
     </section>
 
     <!-- TECH STACK -->
-    <section class="section section--dark" id="stack">
-      <div class="section-inner">
+    <section class="bordered" id="stack">
+      <div class="wrap">
         <h2>tech stack</h2>
-        <div class="stack-grid">
-          <div class="stack-row"><span class="stack-label">voice / ai</span><span class="stack-val">OpenAI Realtime API — gpt-4o-mini-realtime</span></div>
-          <div class="stack-row"><span class="stack-label">wake word</span><span class="stack-val">Vosk — offline, no API key</span></div>
-          <div class="stack-row"><span class="stack-label">audio</span><span class="stack-val">sounddevice + audioop (stdlib resampling)</span></div>
-          <div class="stack-row"><span class="stack-label">backend</span><span class="stack-val">Python 3.11, asyncio, ThreadPoolExecutor</span></div>
-          <div class="stack-row"><span class="stack-label">gui</span><span class="stack-val">pywebview + WebSockets</span></div>
-          <div class="stack-row"><span class="stack-label">mobile</span><span class="stack-val">PWA + Cloudflare Tunnel (auto-started)</span></div>
-          <div class="stack-row"><span class="stack-label">apis</span><span class="stack-val">Google (OAuth2), Govee, Spotipy, ESPN, ntfy.sh</span></div>
+        <div class="stack">
+          <div class="stack-row"><span class="k">voice / ai</span><span class="v">OpenAI Realtime API — gpt-4o-mini-realtime</span></div>
+          <div class="stack-row"><span class="k">wake word</span><span class="v">Vosk — offline, no API key</span></div>
+          <div class="stack-row"><span class="k">audio</span><span class="v">sounddevice + audioop (stdlib resampling)</span></div>
+          <div class="stack-row"><span class="k">backend</span><span class="v">Python 3.11, asyncio, ThreadPoolExecutor</span></div>
+          <div class="stack-row"><span class="k">gui</span><span class="v">pywebview + WebSockets</span></div>
+          <div class="stack-row"><span class="k">mobile</span><span class="v">PWA + Cloudflare Tunnel (auto-started)</span></div>
+          <div class="stack-row"><span class="k">apis</span><span class="v">Google (OAuth2), Govee, Spotipy, ESPN, ntfy.sh</span></div>
         </div>
       </div>
     </section>
 
-    <!-- FOOTER CTA -->
-    <section class="section cta-section">
-      <div class="section-inner cta-inner">
+    <!-- CTA -->
+    <section class="bordered cta">
+      <div class="wrap">
         <h2>see the code</h2>
-        <p>full source on GitHub — architecture, setup instructions, and design decisions in the README.</p>
-        <a class="hero-btn" href="https://github.com/ethans-design/friday" target="_blank" rel="noopener">
+        <p>full source on github — architecture, setup, and design decisions in the readme.</p>
+        <a class="btn btn--primary" href="https://github.com/ethans-design/friday" target="_blank" rel="noopener">
           github.com/ethans-design/friday →
         </a>
       </div>
