@@ -36,7 +36,16 @@
 
     <ul class="sidebar-list">
       <li><a href="#about" class="nav-link">about me</a></li>
-      <li><a href="#projects" class="nav-link">projects</a></li>
+      <li class="nav-group">
+        <a href="#projects" class="nav-link nav-parent" aria-expanded="true" aria-controls="projects-submenu">
+          projects <span class="caret" aria-hidden="true">▾</span>
+        </a>
+        <ul class="submenu" id="projects-submenu">
+          <li><a href="#tools" class="nav-link nav-sublink">tools</a></li>
+          <li><a href="#games" class="nav-link nav-sublink">games</a></li>
+          <li><a href="#designs" class="nav-link nav-sublink">designs</a></li>
+        </ul>
+      </li>
       <li><a href="#skills" class="nav-link">skills</a></li>
     </ul>
 
@@ -60,7 +69,7 @@
 
         <div class="about-text">
           <p>
-            I’m Ethan Saunders, a Creative Technology and Design student at the University of Colorado Boulder, and an aspiring game designer and developer. I focus on coding, 3D modeling, and visual design, and I’m inspired by highly stylized, atmospheric games like Dark Souls, Castle Crashers, and Borderlands. Outside of games, I’m usually in the gym, on the mountain, or skating with friends.
+            My name is Ethan Saunders, and I’m a Creative Technology and Design student at CU Boulder. I focus on building projects that can help solve small problems, and on making fun games.
           </p>
         </div>
       </div>
@@ -70,108 +79,97 @@
     <section id="projects">
       <h1>projects</h1>
 
-      <!-- Featured: Friday -->
-      <div class="featured-project">
-        <article class="project-card project-card--featured">
-          <a class="project-link project-link--anchor" href="friday/index.html">
-            <div class="project-media">
-              <img src="assets/friday-gui.png" alt="Friday dashboard GUI" />
+      <!-- TOOLS -->
+      <div class="projects-group" id="tools">
+        <h2 class="projects-subheading">tools</h2>
+
+        <!-- Featured: Friday -->
+        <div class="featured-project">
+          <article class="project-card project-card--featured">
+            <a class="project-link project-link--anchor" href="friday/index.html">
+              <div class="project-media">
+                <img src="assets/friday-gui.png" alt="Friday dashboard GUI" />
+              </div>
+              <div class="project-body">
+                <span class="featured-tag">featured</span>
+                <h2>friday</h2>
+                <p>A voice-first AI assistant that filters your attention through your goals.</p>
+                <span class="card-cta">see the project →</span>
+              </div>
+            </a>
+          </article>
+        </div>
+
+        <div class="projects-grid">
+          <!-- Food Finder -->
+          <div class="project-stack">
+            <article class="project-card">
+              <a class="project-link project-link--anchor" href="FoodFinder/food.html">
+                <div class="project-media">
+                  <img src="assets/foodfinder.jpg" alt="Food Finder preview" />
+                </div>
+                <div class="project-body">
+                  <h3>food finder</h3>
+                  <p>Answer a few questions and get food picks with real spots near you.</p>
+                </div>
+              </a>
+            </article>
+
+            <div class="project-cta">
+              <a class="project-btn" href="FoodFinder/food.html">try the tool →</a>
             </div>
-            <div class="project-body">
-              <span class="featured-tag">featured</span>
-              <h2>friday</h2>
-              <p>
-                A voice-first personal AI that filters your attention through your goals —
-                wake word activation, always-on WebSocket, mobile PWA.
-              </p>
-              <span class="card-cta">see the project →</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- GAMES -->
+      <div class="projects-group" id="games">
+        <h2 class="projects-subheading">games</h2>
+
+        <div class="projects-grid">
+          <!-- Cowboys With Swords -->
+          <div class="project-stack">
+            <article class="project-card">
+              <a class="project-link project-link--anchor" href="Game1/project1.html">
+                <div class="project-media">
+                  <img src="assets/cowboys.jpg" alt="Cowboys with Swords gameplay preview" />
+                </div>
+                <div class="project-body">
+                  <h3>cowboys with swords</h3>
+                  <p>A parry-based platformer — deflect bullets back at outlaws.</p>
+                </div>
+              </a>
+            </article>
+
+            <div class="project-cta">
+              <a class="project-btn" href="Game1/project1.html">play the game →</a>
             </div>
-          </a>
-        </article>
+          </div>
+
+          <!-- Poké Finder -->
+          <div class="project-stack">
+            <article class="project-card">
+              <a class="project-link project-link--anchor" href="Pokemon/wtp.html">
+                <div class="project-media">
+                  <img src="assets/pokefinder.png" alt="Poké Finder preview" />
+                </div>
+                <div class="project-body">
+                  <h3>poké finder</h3>
+                  <p>Guess the Pokémon from its silhouette and build a streak.</p>
+                </div>
+              </a>
+            </article>
+
+            <div class="project-cta">
+              <a class="project-btn" href="Pokemon/wtp.html">play the game →</a>
+            </div>
+          </div>
+        </div>
       </div>
 
-      <!-- Coding -->
-<div class="projects-group">
-  <h2 class="projects-subheading">coding</h2>
-
-  <div class="projects-grid">
-
-    <!-- Poké Finder -->
-    <div class="project-stack">
-      <article class="project-card">
-        <a class="project-link project-link--anchor" href="Pokemon/wtp.html">
-          <div class="project-media">
-            <img src="assets/pokefinder.png" alt="Poké Finder preview" />
-          </div>
-
-          <div class="project-body">
-            <h3>poké finder</h3>
-            <p>Who's That Pokémon? guessing game — pick your generations and build a streak.</p>
-          </div>
-        </a>
-      </article>
-
-      <div class="project-cta">
-        <a class="project-btn" href="Pokemon/wtp.html">
-          play the game →
-        </a>
-      </div>
-    </div>
-
-    <!-- Cowboys With Swords -->
-    <div class="project-stack">
-      <article class="project-card">
-        <a class="project-link project-link--anchor" href="Game1/project1.html">
-          <div class="project-media">
-            <img src="assets/cowboys.jpg" alt="Cowboys with Swords gameplay preview" />
-          </div>
-
-          <div class="project-body">
-            <h3>cowboys with swords</h3>
-            <p>A parry-based western platformer — deflect bullets back at outlaws and race to the golden flag.</p>
-          </div>
-        </a>
-      </article>
-
-      <div class="project-cta">
-        <a class="project-btn" href="Game1/project1.html">
-          play the game →
-        </a>
-      </div>
-    </div>
-
-    <!-- Food Finder -->
-    <div class="project-stack">
-      <article class="project-card">
-        <a class="project-link project-link--anchor" href="FoodFinder/food.html">
-          <div class="project-media">
-            <img src="assets/foodfinder.jpg" alt="Food Finder preview" />
-          </div>
-
-          <div class="project-body">
-            <h3>food finder</h3>
-            <p>
-              Answer a few questions — mood, budget, hunger, dietary needs —
-              and get ranked picks with what to order, plus real restaurants
-              near you via OpenStreetMap.
-            </p>
-          </div>
-        </a>
-      </article>
-
-      <div class="project-cta">
-        <a class="project-btn" href="FoodFinder/food.html">
-          try the tool →
-        </a>
-      </div>
-    </div>
-
-  </div>
-</div>
-
-      <!-- Graphic Design -->
-      <div class="projects-group">
-        <h2 class="projects-subheading">graphic design</h2>
+      <!-- DESIGNS -->
+      <div class="projects-group" id="designs">
+        <h2 class="projects-subheading">designs</h2>
 
         <div class="projects-grid projects-grid--compact">
           <div class="project-stack">
