@@ -374,7 +374,7 @@ document.getElementById("autoNote").textContent = `· auto-detected: ${MEAL_LABE
 // ---------------------------------------------------------------------------
 // SCORING
 // ---------------------------------------------------------------------------
-const DIET_KEYS = { vegetarian: "v", vegan: "vg", glutenfree: "gf", halal: "h" };
+const DIET_KEYS = { vegetarian: "v", vegan: "vg", glutenfree: "gf" };
 
 function rankFoods(excludeShown) {
   const candidates = FOODS.filter((f) => {
@@ -523,7 +523,6 @@ function showResults(isReroll) {
       ${picks.map((f, i) => `
         <article class="food-result ${i === 0 ? "food-result--top" : ""}">
           <div class="fr-head">
-            <span class="fr-emoji">${f.emoji}</span>
             <div class="fr-title">
               <div class="fr-rank-row">
                 <span class="rank">#${i + 1}${i === 0 ? " · best match" : ""}</span>
@@ -538,7 +537,7 @@ function showResults(isReroll) {
 
           ${f.reasons.length ? `
             <ul class="reasons">
-              ${f.reasons.map((r) => `<li>${r.icon} ${r.text}</li>`).join("")}
+              ${f.reasons.map((r) => `<li>${r.text}</li>`).join("")}
             </ul>` : ""}
 
           <div class="order-box">
@@ -546,10 +545,10 @@ function showResults(isReroll) {
             <ul>${f.dishes.map((d) => `<li>${d}</li>`).join("")}</ul>
           </div>
 
-          <p class="pro-tip">💡 ${f.tip}</p>
+          <p class="pro-tip">${f.tip}</p>
 
           <div class="fr-actions">
-            <button class="nearby-btn" type="button" data-food="${f.name}">📍 find real spots near me</button>
+            <button class="nearby-btn" type="button" data-food="${f.name}">find real spots near me</button>
             <a class="maps-link" href="https://www.google.com/maps/search/${encodeURIComponent(mapsQuery(f))}" target="_blank" rel="noopener noreferrer">
               open in google maps →
             </a>
@@ -600,7 +599,7 @@ async function findNearby(foodName, btn) {
   if (!f || !box) return;
 
   btn.disabled = true;
-  box.innerHTML = `<p class="nearby-status">📡 finding your location…</p>`;
+  box.innerHTML = `<p class="nearby-status">finding your location…</p>`;
 
   let coords;
   try {
@@ -611,7 +610,7 @@ async function findNearby(foodName, btn) {
     return;
   }
 
-  box.innerHTML = `<p class="nearby-status">🔎 searching real restaurants nearby…</p>`;
+  box.innerHTML = `<p class="nearby-status">searching real restaurants nearby…</p>`;
 
   const query = `
     [out:json][timeout:15];
