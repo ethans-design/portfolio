@@ -53,7 +53,12 @@ body {
   width: 28px;
   height: 28px;
   border-radius: 50%;
-  background: linear-gradient(to bottom, var(--red) 0 45%, #fff 45% 55%, #fff 55% 100%);
+  background: linear-gradient(
+    to bottom,
+    var(--red) 0 calc(50% - 1.5px),
+    var(--bg) calc(50% - 1.5px) calc(50% + 1.5px),
+    #fff calc(50% + 1.5px) 100%
+  );
   border: 2px solid #fff;
   position: relative;
   flex-shrink: 0;
@@ -62,10 +67,11 @@ body {
 .pokeball::after {
   content: "";
   position: absolute;
-  inset: 0;
-  margin: auto;
-  width: 8px;
-  height: 8px;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 9px;
+  height: 9px;
   border-radius: 50%;
   background: #fff;
   border: 2px solid var(--bg);

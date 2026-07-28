@@ -230,6 +230,10 @@ h3 { font-size: 1.6rem; }
   color: #e6e6e6;
 }
 
+.about-text p + p {
+  margin-top: 16px;
+}
+
 /* Projects */
 .projects-group {
   margin-top: 48px;
