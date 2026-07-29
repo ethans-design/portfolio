@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>The Dead Marshal</title>
+  <meta name="description" content="The Dead Marshal — a weird-west souls-like duel. Milestone 1: atmosphere & movement." />
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html, body { height: 100%; overflow: hidden; background: #100a0c; }
+    body { font-family: "Georgia", "Times New Roman", serif; color: #e8dcc8; cursor: default; }
+    #game { display: block; width: 100vw; height: 100vh; }
+
+    /* vignette + film grain feel */
+    #vignette {
+      position: fixed; inset: 0; pointer-events: none; z-index: 5;
+      box-shadow: inset 0 0 220px 40px rgba(20, 8, 6, 0.9);
+      background: radial-gradient(ellipse at center, transparent 55%, rgba(20,8,6,0.35) 100%);
+    }
+
+    /* HUD */
+    #hud { position: fixed; inset: 0; pointer-events: none; z-index: 6; }
+    .bars { position: absolute; left: 28px; bottom: 26px; width: 300px; display: flex; flex-direction: column; gap: 7px; }
+    .bar { height: 15px; border: 1px solid rgba(0,0,0,0.6); border-radius: 2px; background: rgba(0,0,0,0.45); overflow: hidden; position: relative; box-shadow: 0 2px 6px rgba(0,0,0,0.5); }
+    .bar .fill { position: absolute; inset: 0; transform-origin: left; transition: transform 0.12s linear; }
+    #hp .fill { background: linear-gradient(180deg, #c0413b, #7d1f1c); }
+    #stam { height: 11px; width: 240px; }
+    #stam .fill { background: linear-gradient(180deg, #cdb25a, #8a6f2c); }
+    #ammo { position: absolute; left: 28px; bottom: 76px; display: flex; gap: 6px; }
+    .round { width: 10px; height: 22px; border-radius: 3px; background: linear-gradient(180deg,#e8c65a,#8a5a1e); border: 1px solid rgba(0,0,0,0.5); box-shadow: 0 1px 3px rgba(0,0,0,0.5); }
+    .round.spent { background: #2a2320; box-shadow: none; }
+
+    #boss { position: absolute; left: 50%; bottom: 34px; transform: translateX(-50%); width: min(620px, 70vw); opacity: 0; transition: opacity 0.6s; }
+    #boss .bar { height: 13px; }
+    #boss .fill { background: linear-gradient(180deg, #7a1f1a, #3a0f0d); width: 100%; }
+    #boss .name { text-align: center; letter-spacing: 5px; font-size: 13px; text-transform: uppercase; color: #d8c090; margin-bottom: 6px; text-shadow: 0 2px 6px #000; }
+
+    #hint { position: absolute; right: 26px; bottom: 24px; text-align: right; font-size: 12.5px; line-height: 1.8; color: rgba(220,205,175,0.6); letter-spacing: 0.5px; }
+    #hint b { color: #d8c090; font-weight: 700; }
+
+    /* Start overlay */
+    #start { position: fixed; inset: 0; z-index: 10; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 26px; background: rgba(12,6,7,0.55); backdrop-filter: blur(2px); text-align: center; cursor: pointer; }
+    #start .kicker { letter-spacing: 8px; font-size: 13px; text-transform: uppercase; color: rgba(216,192,144,0.7); }
+    #start h1 { font-size: clamp(2.6rem, 7vw, 5rem); letter-spacing: 4px; color: #e9d9b6; text-shadow: 0 4px 30px rgba(200,90,30,0.5), 0 2px 8px #000; font-weight: 700; }
+    #start .sub { max-width: 460px; font-size: 15px; line-height: 1.7; color: rgba(220,205,175,0.75); }
+    #start .go { margin-top: 8px; padding: 12px 26px; border: 1px solid rgba(216,192,144,0.5); border-radius: 4px; letter-spacing: 3px; text-transform: uppercase; font-size: 13px; color: #e9d9b6; transition: background 0.2s, border-color 0.2s; }
+    #start:hover .go { background: rgba(216,192,144,0.12); border-color: rgba(216,192,144,0.9); }
+    #start .load { font-size: 12px; letter-spacing: 2px; color: rgba(216,192,144,0.5); }
+    .hidden { display: none !important; }
+  </style>
+
+  <script type="importmap">
+  {
+    "imports": {
+      "three": "https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.module.js",
+      "three/addons/": "https://cdn.jsdelivr.net/npm/three@0.160.0/examples/jsm/"
+    }
+  }
+  </script>
+</head>
+<body>
+  <canvas id="game"></canvas>
+  <div id="vignette"></div>
+
+  <div id="hud">
+    <div id="ammo"></div>
+    <div class="bars">
+      <div class="bar" id="hp"><div class="fill"></div></div>
+      <div class="bar" id="stam"><div class="fill"></div></div>
+    </div>
+    <div id="boss">
+      <div class="name">The Dead Marshal</div>
+      <div class="bar"><div class="fill"></div></div>
+    </div>
+    <div id="hint">
+      <b>WASD</b> move &nbsp; <b>Mouse</b> look &nbsp; <b>Shift</b> sprint<br>
+      <b>Space</b> dodge roll &nbsp; <b>L-Click</b> swing &nbsp; <b>R-Click</b> aim<br>
+      <b>F</b> revolver (gun-parry) &nbsp; <b>Esc</b> release mouse
+    </div>
+  </div>
+
+  <div id="start">
+    <div class="kicker">a weird-west reckoning</div>
+    <h1>THE DEAD MARSHAL</h1>
+    <div class="sub">The sun is dying over a town that already has. At the end of the street, the law still stands — and it is waiting for you. Take up the greatsword.</div>
+    <div class="go" id="go">Click to enter</div>
+    <div class="load" id="load">loading…</div>
+  </div>
+
+  <script type="module" src="game.js"></script>
+</body>
+</html>
