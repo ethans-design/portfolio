@@ -13,12 +13,9 @@
   <a href="#main" class="skip-link">skip to content</a>
 
   <!--
-    OBJECT — documentation page.
-    HOW TO USE: each assignment below has a "process documentation" area and a
-    "final documentation" area. Replace the dashed placeholder slots with your
-    real media (see the note in object.css: <img>/<video> inside .slot just work),
-    and rewrite every figcaption + overview with your own WHAT / HOW / WHY.
-    Update the .status chip on each section as you go.
+    OBJECT — documentation page. Add a new <section class="assignment"> per project
+    (and a matching nav link) as the semester goes. Keep every image/video paired
+    with a written what / how / why.
   -->
 
   <div class="wrap">
@@ -31,15 +28,7 @@
       </div>
 
       <nav class="nav" aria-label="Projects">
-        <a href="#intro" class="nav-link">overview</a>
-        <div class="divider"></div>
         <a href="#technology-tinder" class="nav-link">Technology Tinder</a>
-        <a href="#idc1-ideation" class="nav-link">IDC1 Ideation</a>
-        <a href="#idc1-project" class="nav-link">IDC1 Project</a>
-        <a href="#enclosures" class="nav-link">Enclosures Mini Project</a>
-        <a href="#motor-buffet" class="nav-link">Motor Buffet Mini Project</a>
-        <a href="#idc2-ideation" class="nav-link">IDC2 Ideation</a>
-        <a href="#idc2-project" class="nav-link">IDC2 Project</a>
       </nav>
 
       <div class="side-foot">
@@ -49,208 +38,105 @@
 
     <!-- MAIN -->
     <main id="main">
-      <!-- INTRO -->
-      <section id="intro" class="intro">
-        <h2>process &amp; documentation</h2>
-        <p>
-          A running record of the work I make in Object this semester — ideation, mini
-          projects, and full projects. Each entry documents both the <b>process</b> and the
-          <b>final</b> result through images, video, sketches, and diagrams, with writing that
-          explains each one.
-        </p>
-        <div class="callout">
-          Every piece of media here is paired with a written note covering <b>what</b> (the
-          subject), <b>how</b> (the process), and <b>why</b> (the concept) — media never stands
-          on its own.
-        </div>
-      </section>
-
-      <!-- 1 · TECHNOLOGY TINDER -->
-      <section id="technology-tinder" class="assignment">
+      <!-- TECHNOLOGY TINDER -->
+      <section id="technology-tinder" class="assignment" style="border-top:none; padding-top:14px;">
         <div class="sec-head">
           <span class="tag">warm-up</span>
           <h2>Technology Tinder</h2>
-          <span class="status">not started</span>
+          <span class="status">complete</span>
         </div>
+
         <p class="overview">
-          <span class="prompt">Overview — replace with your writing. What is this exercise? How did you
-          approach it? Why does it matter / what did you take from it?</span>
+          Technology Tinder is a warm-up in judging technology the way you'd swipe on a dating
+          app — sizing something up on looks and specs, then deciding whether you'd actually take
+          it home. I matched two generations of the same car against each other: the brand-new
+          <b style="color:var(--text)">2026 Honda Prelude</b> and the
+          <b style="color:var(--text)">1998 Prelude</b> that first earned the name. For each I built
+          an honest pros-and-cons list from specs, reviews, and what the car is like to live with,
+          then made the call.
         </p>
 
-        <div class="phase-label">Process documentation</div>
-        <div class="media-grid">
-          <figure class="slot"><div class="ph" data-type="sketch"></div><figcaption><b>Sketch —</b> what it shows · how you made it · why it's here.</figcaption></figure>
-          <figure class="slot"><div class="ph" data-type="image"></div><figcaption><b>Image —</b> what · how · why.</figcaption></figure>
-          <figure class="slot"><div class="ph" data-type="diagram"></div><figcaption><b>Diagram —</b> what · how · why.</figcaption></figure>
+        <div class="compare">
+          <!-- 2026 -->
+          <div class="car-card">
+            <div class="car-media">
+              <img src="assets/prelude-2026.jpg" alt="White 2026 Honda Prelude, front three-quarter view" />
+            </div>
+            <div class="car-body">
+              <div class="car-title"><h3>Prelude</h3><span class="yr">2026</span></div>
+              <p class="fig">fig. 1 — Honda's revived halo coupe: sharp styling, screens everywhere, and a hybrid drivetrain. The swipe-right bait.</p>
+              <div class="pc">
+                <div class="pros">
+                  <h4>Pros</h4>
+                  <ul>
+                    <li>Looks pretty cool</li>
+                    <li>Decent handling</li>
+                    <li>Good brakes</li>
+                    <li>CarPlay</li>
+                    <li>Massive screen</li>
+                  </ul>
+                </div>
+                <div class="cons">
+                  <h4>Cons</h4>
+                  <ul>
+                    <li>CVT (only option)</li>
+                    <li>Slow</li>
+                    <li>$42,000</li>
+                    <li>Fake driving feel</li>
+                    <li>Heavy</li>
+                    <li>FWD</li>
+                    <li>Hybrid (but bad)</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- 1998 -->
+          <div class="car-card">
+            <div class="car-media">
+              <img src="assets/prelude-1998.jpg" alt="Red 1998 Honda Prelude, front three-quarter view" />
+            </div>
+            <div class="car-body">
+              <div class="car-title"><h3>Prelude</h3><span class="yr">1998</span></div>
+              <p class="fig">fig. 2 — The fifth-gen Prelude, the name's high-water mark: VTEC, four-wheel steering, and a manual. Older, cheaper, and the one you'd actually want.</p>
+              <div class="pc">
+                <div class="pros">
+                  <h4>Pros</h4>
+                  <ul>
+                    <li>Looks even cooler</li>
+                    <li>Great handling</li>
+                    <li>4-wheel steering</li>
+                    <li>Manual or automatic</li>
+                    <li>Reliable</li>
+                    <li>Incredibly fun to drive</li>
+                    <li>VTEC</li>
+                    <li>$13,000 new (~$35,000 today)</li>
+                  </ul>
+                </div>
+                <div class="cons">
+                  <h4>Cons</h4>
+                  <ul>
+                    <li>Also slow (same speed as the new one)</li>
+                    <li>~25 years old</li>
+                    <li>FWD</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
 
-        <div class="phase-label">Final documentation</div>
-        <div class="media-grid">
-          <figure class="slot spanning"><div class="ph wide" data-type="video"></div><figcaption><b>Video —</b> what the final does · how it works · why you built it this way.</figcaption></figure>
-          <figure class="slot"><div class="ph" data-type="image"></div><figcaption><b>Image —</b> what · how · why.</figcaption></figure>
-          <figure class="slot"><div class="ph" data-type="image"></div><figcaption><b>Image —</b> what · how · why.</figcaption></figure>
-        </div>
-      </section>
-
-      <!-- 2 · IDC1 IDEATION -->
-      <section id="idc1-ideation" class="assignment">
-        <div class="sec-head">
-          <span class="tag">ideation</span>
-          <h2>IDC1 Ideation</h2>
-          <span class="status">not started</span>
-        </div>
-        <p class="overview">
-          <span class="prompt">Overview — the problem space, your prompts, and the directions you
-          explored. What are you designing toward? How did you generate ideas? Why these?</span>
-        </p>
-
-        <div class="phase-label">Process documentation</div>
-        <div class="media-grid">
-          <figure class="slot"><div class="ph" data-type="sketch"></div><figcaption><b>Sketch —</b> early concept · what · how · why.</figcaption></figure>
-          <figure class="slot"><div class="ph" data-type="sketch"></div><figcaption><b>Sketch —</b> alternative · what · how · why.</figcaption></figure>
-          <figure class="slot"><div class="ph" data-type="diagram"></div><figcaption><b>Diagram —</b> mind-map / flow · what · how · why.</figcaption></figure>
-          <figure class="slot"><div class="ph" data-type="image"></div><figcaption><b>Image —</b> reference / mood · what · how · why.</figcaption></figure>
-        </div>
-
-        <div class="phase-label">Final documentation</div>
-        <div class="media-grid">
-          <figure class="slot"><div class="ph" data-type="image"></div><figcaption><b>Image —</b> chosen direction · what · how · why.</figcaption></figure>
-          <figure class="slot"><div class="ph" data-type="diagram"></div><figcaption><b>Diagram —</b> refined concept · what · how · why.</figcaption></figure>
-        </div>
-      </section>
-
-      <!-- 3 · IDC1 PROJECT -->
-      <section id="idc1-project" class="assignment">
-        <div class="sec-head">
-          <span class="tag">project</span>
-          <h2>IDC1 Project</h2>
-          <span class="status">not started</span>
-        </div>
-        <p class="overview">
-          <span class="prompt">Overview — the built project. What is it? How did you make it (materials,
-          tools, steps)? Why — the concept it embodies and what you learned.</span>
-        </p>
-
-        <div class="phase-label">Process documentation</div>
-        <div class="media-grid">
-          <figure class="slot"><div class="ph" data-type="sketch"></div><figcaption><b>Sketch —</b> plan · what · how · why.</figcaption></figure>
-          <figure class="slot"><div class="ph" data-type="image"></div><figcaption><b>Image —</b> in progress · what · how · why.</figcaption></figure>
-          <figure class="slot"><div class="ph" data-type="diagram"></div><figcaption><b>Diagram —</b> how it works · what · how · why.</figcaption></figure>
-          <figure class="slot"><div class="ph" data-type="video"></div><figcaption><b>Video —</b> build / test · what · how · why.</figcaption></figure>
-        </div>
-
-        <div class="phase-label">Final documentation</div>
-        <div class="media-grid">
-          <figure class="slot spanning"><div class="ph wide" data-type="video"></div><figcaption><b>Video —</b> the finished project in use · what · how · why.</figcaption></figure>
-          <figure class="slot"><div class="ph" data-type="image"></div><figcaption><b>Image —</b> final, hero shot · what · how · why.</figcaption></figure>
-          <figure class="slot"><div class="ph" data-type="image"></div><figcaption><b>Image —</b> detail · what · how · why.</figcaption></figure>
-        </div>
-      </section>
-
-      <!-- 4 · ENCLOSURES MINI PROJECT -->
-      <section id="enclosures" class="assignment">
-        <div class="sec-head">
-          <span class="tag">mini project</span>
-          <h2>Enclosures Mini Project</h2>
-          <span class="status">not started</span>
-        </div>
-        <p class="overview">
-          <span class="prompt">Overview — the enclosure you designed/built. What houses what? How
-          did you fabricate it? Why these choices (form, material, fit)?</span>
-        </p>
-
-        <div class="phase-label">Process documentation</div>
-        <div class="media-grid">
-          <figure class="slot"><div class="ph" data-type="sketch"></div><figcaption><b>Sketch —</b> dimensions / plan · what · how · why.</figcaption></figure>
-          <figure class="slot"><div class="ph" data-type="diagram"></div><figcaption><b>Diagram —</b> exploded / assembly · what · how · why.</figcaption></figure>
-          <figure class="slot"><div class="ph" data-type="image"></div><figcaption><b>Image —</b> fabrication · what · how · why.</figcaption></figure>
-        </div>
-
-        <div class="phase-label">Final documentation</div>
-        <div class="media-grid">
-          <figure class="slot"><div class="ph" data-type="image"></div><figcaption><b>Image —</b> finished enclosure · what · how · why.</figcaption></figure>
-          <figure class="slot"><div class="ph" data-type="video"></div><figcaption><b>Video —</b> open/close, fit · what · how · why.</figcaption></figure>
-        </div>
-      </section>
-
-      <!-- 5 · MOTOR BUFFET MINI PROJECT -->
-      <section id="motor-buffet" class="assignment">
-        <div class="sec-head">
-          <span class="tag">mini project</span>
-          <h2>Motor Buffet Mini Project</h2>
-          <span class="status">not started</span>
-        </div>
-        <p class="overview">
-          <span class="prompt">Overview — exploring motors/actuation. What motion did you make? How did
-          you drive it (circuit, code, mechanism)? Why — what the movement expresses.</span>
-        </p>
-
-        <div class="phase-label">Process documentation</div>
-        <div class="media-grid">
-          <figure class="slot"><div class="ph" data-type="diagram"></div><figcaption><b>Diagram —</b> circuit / mechanism · what · how · why.</figcaption></figure>
-          <figure class="slot"><div class="ph" data-type="sketch"></div><figcaption><b>Sketch —</b> motion idea · what · how · why.</figcaption></figure>
-          <figure class="slot"><div class="ph" data-type="video"></div><figcaption><b>Video —</b> first movement test · what · how · why.</figcaption></figure>
-        </div>
-
-        <div class="phase-label">Final documentation</div>
-        <div class="media-grid">
-          <figure class="slot spanning"><div class="ph wide" data-type="video"></div><figcaption><b>Video —</b> the motor piece running · what · how · why.</figcaption></figure>
-          <figure class="slot"><div class="ph" data-type="image"></div><figcaption><b>Image —</b> the build · what · how · why.</figcaption></figure>
-          <figure class="slot"><div class="ph" data-type="image"></div><figcaption><b>Image —</b> detail · what · how · why.</figcaption></figure>
-        </div>
-      </section>
-
-      <!-- 6 · IDC2 IDEATION -->
-      <section id="idc2-ideation" class="assignment">
-        <div class="sec-head">
-          <span class="tag">ideation</span>
-          <h2>IDC2 Ideation</h2>
-          <span class="status">not started</span>
-        </div>
-        <p class="overview">
-          <span class="prompt">Overview — the second project's ideation. What's the brief/opportunity?
-          How did you explore it? Why the direction you chose.</span>
-        </p>
-
-        <div class="phase-label">Process documentation</div>
-        <div class="media-grid">
-          <figure class="slot"><div class="ph" data-type="sketch"></div><figcaption><b>Sketch —</b> concepts · what · how · why.</figcaption></figure>
-          <figure class="slot"><div class="ph" data-type="diagram"></div><figcaption><b>Diagram —</b> mapping · what · how · why.</figcaption></figure>
-          <figure class="slot"><div class="ph" data-type="image"></div><figcaption><b>Image —</b> reference · what · how · why.</figcaption></figure>
-        </div>
-
-        <div class="phase-label">Final documentation</div>
-        <div class="media-grid">
-          <figure class="slot"><div class="ph" data-type="image"></div><figcaption><b>Image —</b> chosen direction · what · how · why.</figcaption></figure>
-          <figure class="slot"><div class="ph" data-type="diagram"></div><figcaption><b>Diagram —</b> plan forward · what · how · why.</figcaption></figure>
-        </div>
-      </section>
-
-      <!-- 7 · IDC2 PROJECT -->
-      <section id="idc2-project" class="assignment">
-        <div class="sec-head">
-          <span class="tag">project</span>
-          <h2>IDC2 Project</h2>
-          <span class="status">not started</span>
-        </div>
-        <p class="overview">
-          <span class="prompt">Overview — the final built project. What is it? How did you make it? Why —
-          the concept, and what you learned across the semester.</span>
-        </p>
-
-        <div class="phase-label">Process documentation</div>
-        <div class="media-grid">
-          <figure class="slot"><div class="ph" data-type="sketch"></div><figcaption><b>Sketch —</b> plan · what · how · why.</figcaption></figure>
-          <figure class="slot"><div class="ph" data-type="image"></div><figcaption><b>Image —</b> in progress · what · how · why.</figcaption></figure>
-          <figure class="slot"><div class="ph" data-type="diagram"></div><figcaption><b>Diagram —</b> system · what · how · why.</figcaption></figure>
-          <figure class="slot"><div class="ph" data-type="video"></div><figcaption><b>Video —</b> testing · what · how · why.</figcaption></figure>
-        </div>
-
-        <div class="phase-label">Final documentation</div>
-        <div class="media-grid">
-          <figure class="slot spanning"><div class="ph wide" data-type="video"></div><figcaption><b>Video —</b> finished project · what · how · why.</figcaption></figure>
-          <figure class="slot"><div class="ph" data-type="image"></div><figcaption><b>Image —</b> hero shot · what · how · why.</figcaption></figure>
-          <figure class="slot"><div class="ph" data-type="image"></div><figcaption><b>Image —</b> detail · what · how · why.</figcaption></figure>
+        <div class="verdict">
+          <h3>the verdict</h3>
+          <p>
+            This was a gut-check on the assumption that newer is better. The 2026 wins on screens,
+            CarPlay, brakes, and curb appeal — but it's a heavy, front-wheel-drive hybrid locked to
+            a CVT that only <i>simulates</i> the feeling of driving. The 1998 is slower on paper and
+            a quarter-century old, yet it's the one I'd take home: four-wheel steering, VTEC, a real
+            manual, genuinely fun, reliable, and a fraction of the price.
+            <b>Swipe left on the 2026 — swipe right on the '98.</b>
+          </p>
         </div>
       </section>
 
@@ -261,7 +147,7 @@
   </div>
 
   <script>
-    // smooth-scroll focus + active-section highlight
+    // active-section highlight (scales as more projects are added)
     const links = [...document.querySelectorAll(".nav-link")];
     const sections = links.map((l) => document.querySelector(l.getAttribute("href"))).filter(Boolean);
     const byId = (id) => links.find((l) => l.getAttribute("href") === "#" + id);
