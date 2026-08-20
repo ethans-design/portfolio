@@ -120,10 +120,11 @@ main { padding: 46px clamp(24px, 5vw, 64px) 100px; min-width: 0; }
 .spanning { grid-column: 1 / -1; }
 
 /* Tech Tinder — car comparison */
-.compare { display: grid; grid-template-columns: 1fr 1fr; gap: 22px; margin-top: 10px; }
+.compare { display: grid; grid-template-columns: 1fr 1fr; gap: 22px; margin-top: 10px; align-items: start; }
 .car-card { background: var(--panel); border: 1px solid var(--line); border-radius: 14px; overflow: hidden; }
 .car-media { background: #000; display: flex; align-items: center; justify-content: center; padding: 8px; }
 .car-media img { width: 100%; height: auto; display: block; border-radius: 8px; }
+.car-label { padding: 14px 18px; font-size: 1.05rem; font-weight: 700; color: var(--text); letter-spacing: 0.01em; }
 .car-body { padding: 18px 20px 22px; }
 .car-title { display: flex; align-items: baseline; gap: 10px; }
 .car-title h3 { font-size: 1.4rem; }
