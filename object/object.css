@@ -119,6 +119,10 @@ main { padding: 46px clamp(24px, 5vw, 64px) 100px; min-width: 0; }
 
 .spanning { grid-column: 1 / -1; }
 
+/* Tech Tinder — full slides */
+.slides { display: flex; flex-direction: column; gap: 22px; margin-top: 10px; max-width: 980px; }
+.slide { width: 100%; height: auto; display: block; border-radius: 12px; border: 1px solid var(--line); box-shadow: 0 14px 40px rgba(0,0,0,0.35); }
+
 /* Tech Tinder — car comparison */
 .compare { display: grid; grid-template-columns: 1fr 1fr; gap: 22px; margin-top: 10px; align-items: start; }
 .car-card { background: var(--panel); border: 1px solid var(--line); border-radius: 14px; overflow: hidden; }
