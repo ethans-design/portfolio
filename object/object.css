@@ -119,6 +119,21 @@ main { padding: 46px clamp(24px, 5vw, 64px) 100px; min-width: 0; }
 
 .spanning { grid-column: 1 / -1; }
 
+/* 3 Pet Peeves */
+.peeves { display: grid; gap: 16px; margin-top: 12px; max-width: 840px; }
+.peeve {
+  display: grid; grid-template-columns: auto 1fr; gap: 20px; align-items: start;
+  background: var(--panel); border: 1px solid var(--line); border-radius: 14px; padding: 22px 24px;
+}
+.peeve .num { font-family: "digibop", sans-serif; font-size: 2.1rem; line-height: 1; color: var(--purple-lite); opacity: 0.6; }
+.peeve-title { font-size: 1.25rem; font-weight: 700; color: var(--text); margin-bottom: 8px; }
+.peeve p { color: var(--muted); margin-bottom: 8px; }
+.peeve .idea { color: var(--text); margin-bottom: 0; }
+.idea-tag {
+  font-size: 0.68rem; letter-spacing: 0.14em; text-transform: uppercase; font-weight: 700;
+  color: var(--pink); border: 1px solid var(--line); border-radius: 999px; padding: 3px 9px; margin-right: 8px;
+}
+
 /* Tech Tinder — full slides */
 .slides { display: flex; flex-direction: column; gap: 22px; margin-top: 10px; max-width: 980px; }
 .slide { width: 100%; height: auto; display: block; border-radius: 12px; border: 1px solid var(--line); box-shadow: 0 14px 40px rgba(0,0,0,0.35); }
