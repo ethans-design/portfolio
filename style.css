@@ -36,16 +36,23 @@ body {
   -webkit-font-smoothing: antialiased;
 }
 
-/* Thin amethyst stripe across the top of the page */
+/* Three stripes across the top and bottom of the page, crossing the side stripes */
 body::before {
   content: "";
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  height: 4px;
-  background: var(--amethyst);
-  z-index: 50;
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  --band-top: linear-gradient(180deg,
+    var(--amethyst) 0 10px, transparent 0 18px,
+    var(--green) 0 28px, transparent 0 36px,
+    var(--green) 0 46px);
+  --band-bottom: linear-gradient(180deg,
+    var(--green) 0 10px, transparent 0 18px,
+    var(--green) 0 28px, transparent 0 36px,
+    var(--amethyst) 0 46px);
+  background:
+    var(--band-top) 0 40px / 100% 46px no-repeat,
+    var(--band-bottom) 0 calc(100% - 40px) / 100% 46px no-repeat;
 }
 
 /* Three stripes down the right side of the whole page: green, green, amethyst */
@@ -65,11 +72,24 @@ body::after {
     var(--green) 0 10px, transparent 0 18px,
     var(--green) 0 28px, transparent 0 36px,
     var(--amethyst) 0 46px);
-  z-index: 40;
   pointer-events: none;
 }
 
 @media (max-width: 768px) {
+  body::before {
+    background:
+      var(--band-top) 0 14px / 100% 23px no-repeat,
+      var(--band-bottom) 0 calc(100% - 14px) / 100% 23px no-repeat;
+    --band-top: linear-gradient(180deg,
+      var(--amethyst) 0 5px, transparent 0 9px,
+      var(--green) 0 14px, transparent 0 18px,
+      var(--green) 0 23px);
+    --band-bottom: linear-gradient(180deg,
+      var(--green) 0 5px, transparent 0 9px,
+      var(--green) 0 14px, transparent 0 18px,
+      var(--amethyst) 0 23px);
+  }
+
   body::after { right: 14px; width: 23px; background: linear-gradient(90deg,
     var(--green) 0 5px, transparent 0 9px,
     var(--green) 0 14px, transparent 0 18px,
@@ -108,6 +128,7 @@ p {
 /* Sidebar */
 .sidebar {
   position: fixed;
+  z-index: 1;
   top: 26px;
   left: 20px;
   width: 220px;
@@ -266,8 +287,9 @@ p {
 
 /* Content */
 .content {
+  position: relative;
   margin-left: 260px;
-  padding: 26px 106px 20px 20px; /* right padding clears the side stripes */
+  padding: 90px 106px 130px 20px; /* clears the top, bottom and side stripes */
 }
 
 section {
@@ -464,14 +486,18 @@ section > h1::after {
 /* Responsive */
 @media (max-width: 768px) {
   .sidebar {
-    position: static;
+    position: relative;
+    top: 0;
+    left: 0;
     width: auto;
     height: auto;
-    margin: 20px 46px 20px 12px;
+    margin: 52px 46px 20px 12px;
   }
 
   .content {
     margin-left: 0;
+    padding-top: 20px;
+    padding-bottom: 70px;
     padding-right: 46px;
   }
 
