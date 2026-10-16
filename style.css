@@ -19,8 +19,6 @@
   --green: #3f6c51;
   --green-soft: #e3eee7;
 
-  --duo: linear-gradient(90deg, var(--amethyst) 0 62%, var(--green) 0);
-
   --accent: var(--amethyst);
 }
 
@@ -34,20 +32,115 @@ body {
   color: var(--ink);
   font-family: "acumin-pro", sans-serif;
   overflow-x: hidden;
-  cursor: url("assets/Crosshair Purple.cur"), auto;
+  cursor: url("assets/crosshair.png") 16 16, crosshair;
   -webkit-font-smoothing: antialiased;
 }
 
-/* Two-tone stripe across the top of the page */
+/* Thin amethyst stripe across the top of the page */
 body::before {
   content: "";
   position: fixed;
   top: 0;
   left: 0;
   right: 0;
-  height: 6px;
-  background: var(--duo);
+  height: 4px;
+  background: var(--amethyst);
   z-index: 50;
+}
+
+/* Abstract background — simple shapes, kept faint so content stays readable */
+.bg-art {
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  overflow: hidden;
+}
+
+.bg-art > * {
+  position: absolute;
+}
+
+.shape-sun {
+  width: 460px;
+  height: 460px;
+  top: -170px;
+  right: -140px;
+  border-radius: 50%;
+  background: var(--amethyst);
+  opacity: 0.07;
+}
+
+.shape-dot {
+  width: 54px;
+  height: 54px;
+  top: 150px;
+  right: 120px;
+  border-radius: 50%;
+  background: var(--green);
+  opacity: 0.45;
+}
+
+.shape-frame {
+  width: 170px;
+  height: 170px;
+  top: 46vh;
+  right: -60px;
+  border: 2px solid var(--amethyst);
+  opacity: 0.16;
+  transform: rotate(14deg);
+}
+
+.shape-arch {
+  width: 300px;
+  height: 150px;
+  bottom: 0;
+  right: 4vw;
+  border-radius: 150px 150px 0 0;
+  background: var(--green);
+  opacity: 0.1;
+}
+
+.shape-line {
+  width: 240px;
+  height: 2px;
+  bottom: 30vh;
+  right: -40px;
+  background: var(--amethyst);
+  opacity: 0.25;
+  transform: rotate(-35deg);
+}
+
+.shape-quarter {
+  width: 260px;
+  height: 260px;
+  bottom: -1px;
+  left: 260px;
+  border-radius: 0 100% 0 0;
+  background: var(--amethyst);
+  opacity: 0.05;
+}
+
+.shape-grid {
+  width: 132px;
+  height: 132px;
+  top: 210px;
+  right: 30px;
+  background-image: radial-gradient(var(--amethyst) 2px, transparent 2.5px);
+  background-size: 22px 22px;
+  opacity: 0.22;
+}
+
+@media (max-width: 1400px) {
+  .shape-grid, .shape-line { display: none; }
+  .shape-sun { opacity: 0.05; }
+  .shape-dot { right: 40px; top: 110px; }
+  .shape-frame { right: -110px; }
+}
+
+@media (max-width: 768px) {
+  .shape-sun { width: 280px; height: 280px; top: -120px; right: -110px; }
+  .shape-frame, .shape-line, .shape-quarter { display: none; }
 }
 
 ::selection {
@@ -85,9 +178,10 @@ p {
   top: 26px;
   left: 20px;
   width: 220px;
-  padding: 20px;
+  padding: 24px 20px 20px;
   background: var(--bg);
-  border: 2px solid var(--amethyst);
+  border: 1px solid var(--line);
+  box-shadow: 0 10px 30px rgba(48, 26, 75, 0.06);
   border-radius: 14px;
   display: flex;
   flex-direction: column;
@@ -97,14 +191,16 @@ p {
 
 .sidebar-header {
   display: flex;
+  flex-direction: column;
   align-items: center;
-  gap: 12px;
+  gap: 10px;
+  text-align: center;
 }
 
 .sidebar-logo {
-  width: 60px;
-  height: 60px;
-  object-fit: contain;
+  width: 96px;
+  height: auto;
+  display: block;
   filter: invert(1); /* the logo is white line art; flip it to ink on the white page */
 }
 
@@ -116,24 +212,17 @@ p {
 }
 
 .sidebar-stripe {
-  height: 6px;
-  margin: 16px 0 6px;
-  border-radius: 3px;
-  background: var(--duo);
+  width: 48px;
+  height: 4px;
+  margin: 16px auto 6px;
+  border-radius: 2px;
+  background: var(--green);
 }
 
 .sidebar-list {
   list-style: none;
   margin-top: 12px;
 }
-
-/* Menu links — each carries its own color */
-.sidebar-list > li:nth-child(1) { --accent: var(--amethyst); }
-.sidebar-list > li:nth-child(2) { --accent: var(--green); }
-.sidebar-list > li:nth-child(3) { --accent: var(--amethyst); }
-.submenu li:nth-child(1) { --accent: var(--amethyst); }
-.submenu li:nth-child(2) { --accent: var(--green); }
-.submenu li:nth-child(3) { --accent: var(--amethyst); }
 
 .nav-link {
   display: flex;
@@ -249,6 +338,7 @@ p {
 }
 
 section {
+  max-width: 1000px;
   padding: 80px 20px;
   border-bottom: 2px solid var(--line);
   scroll-margin-top: 20px;
@@ -257,13 +347,6 @@ section {
 section:last-of-type {
   border-bottom: none;
 }
-
-#about { --accent: var(--amethyst); }
-#projects { --accent: var(--green); }
-#skills { --accent: var(--amethyst); }
-#tools { --accent: var(--amethyst); }
-#games { --accent: var(--green); }
-#designs { --accent: var(--amethyst); }
 
 /* Headings */
 h1, h2, h3 {
@@ -276,15 +359,15 @@ h1 { font-size: 3rem; margin-bottom: 28px; }
 h2 { font-size: 2.2rem; margin-bottom: 18px; }
 h3 { font-size: 1.6rem; }
 
-/* Section titles get a two-tone underline */
+/* Section titles get a short green underline */
 section > h1::after {
   content: "";
   display: block;
-  width: 96px;
-  height: 8px;
-  margin-top: 10px;
-  border-radius: 4px;
-  background: var(--duo);
+  width: 56px;
+  height: 4px;
+  margin-top: 12px;
+  border-radius: 2px;
+  background: var(--green);
 }
 
 /* Sub-headings get a colored square */
@@ -308,17 +391,17 @@ section > h1::after {
   display: grid;
   grid-template-columns: 220px 1fr;
   gap: 40px;
-  max-width: 900px;
+  max-width: 860px;
   align-items: start;
 }
 
-/* Photo framed in a two-tone ring */
+/* Photo framed in an amethyst ring */
 .about-photo {
   width: 220px;
   aspect-ratio: 1 / 1;
   border-radius: 50%;
   padding: 6px;
-  background: conic-gradient(from 200deg, var(--amethyst), var(--green), var(--amethyst));
+  background: var(--amethyst);
 }
 
 .about-photo img {
@@ -347,14 +430,14 @@ section > h1::after {
 
 .projects-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(260px,1fr));
+  grid-template-columns: repeat(auto-fill, minmax(220px, 300px));
   gap: 28px;
 }
 
 .project-card {
   border-radius: 14px;
   overflow: hidden;
-  border: 2px solid var(--amethyst);
+  border: 1px solid var(--line);
   background: var(--bg);
   transition: transform 0.2s, box-shadow 0.2s;
 }
@@ -371,7 +454,7 @@ section > h1::after {
 .project-media {
   aspect-ratio: 16/9;
   overflow: hidden;
-  border-bottom: 2px solid var(--amethyst);
+  border-bottom: 1px solid var(--line);
   background: var(--paper);
 }
 
@@ -382,18 +465,33 @@ section > h1::after {
   transition: transform 0.35s;
 }
 
+/* Background-removed product shots sit whole on the panel */
+.project-media--cutout img {
+  object-fit: contain;
+  padding: 12px;
+}
+
 .project-body {
-  padding: 18px;
+  padding: 16px;
+}
+
+.project-body h3 {
+  font-size: 1.35rem;
+  margin-bottom: 4px;
+}
+
+.project-body p {
+  font-size: 0.95rem;
 }
 
 .project-body p {
   color: var(--ink-soft);
 }
 
-/* Flat, offset color shadow on hover */
 .project-card:hover {
-  transform: translate(-4px, -4px);
-  box-shadow: 8px 8px 0 var(--accent);
+  transform: translateY(-4px);
+  border-color: var(--amethyst);
+  box-shadow: 0 14px 30px rgba(48, 26, 75, 0.12);
 }
 
 .project-card:hover img {
@@ -402,7 +500,7 @@ section > h1::after {
 
 /* Compact grid — smaller cards (graphic design) */
 .projects-grid--compact {
-  grid-template-columns: repeat(auto-fill, minmax(200px, 260px));
+  grid-template-columns: repeat(auto-fill, minmax(180px, 240px));
 }
 
 .projects-grid--compact .project-body {
@@ -420,9 +518,9 @@ section > h1::after {
 
 .project-btn {
   display: inline-block;
-  padding: 10px 14px;
-  border-radius: 10px;
-  border: 2px solid var(--amethyst);
+  padding: 9px 14px;
+  border-radius: 999px;
+  border: 1.5px solid var(--amethyst);
   background: var(--bg);
   color: var(--ink);
   text-decoration: none;
@@ -435,11 +533,9 @@ section > h1::after {
 }
 
 .project-btn:hover {
-  background: var(--accent);
-  border-color: var(--accent);
+  background: var(--amethyst);
+  border-color: var(--amethyst);
   color: #fff;
-  transform: translate(-2px, -2px);
-  box-shadow: 4px 4px 0 var(--amethyst);
 }
 
 /* Responsive */
@@ -474,7 +570,7 @@ section > h1::after {
   height: 100%;
 }
 
-/* Skills list — bullets alternate amethyst and green */
+/* Skills list */
 .dashed-list {
   list-style: none;
   max-width: 720px;
@@ -499,7 +595,6 @@ section > h1::after {
   transform: translateY(-50%) rotate(45deg);
   background: var(--amethyst);
 }
-.dashed-list li:nth-child(even)::before { background: var(--green); }
 
 /* Footer */
 .site-footer {
@@ -536,7 +631,7 @@ section > h1::after {
   max-height: 80vh;
   border-radius: 14px;
   border: 2px solid var(--amethyst);
-  box-shadow: 10px 10px 0 var(--green);
+  box-shadow: 0 20px 50px rgba(48, 26, 75, 0.18);
 }
 
 .lightbox figcaption {

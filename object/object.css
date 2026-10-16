@@ -133,7 +133,7 @@ main { padding: 46px clamp(24px, 5vw, 64px) 100px; min-width: 0; }
 .slot img { border: 1px solid var(--line); }
 
 /* Chair, Bag & Lamp — background-removed cutouts */
-.media-grid.cutouts { grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); max-width: 980px; }
+.media-grid.cutouts { grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); max-width: 780px; }
 .cutouts .slot img {
   border: none; border-radius: 14px; background: radial-gradient(circle at 50% 40%, var(--panel-2), var(--panel) 70%);
   aspect-ratio: 4 / 5; object-fit: contain; padding: 18px;
