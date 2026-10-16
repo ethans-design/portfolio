@@ -25,7 +25,7 @@ if (navGroup) {
 
 // Highlight the sidebar link for the section currently in view
 const navLinks = document.querySelectorAll('.nav-link');
-const subIds = ['tools', 'games', 'designs'];
+const subIds = ['tools', 'games', 'designs', 'hardgoods'];
 const spyIds = ['about', ...subIds, 'skills'];
 const sections = spyIds
   .map(id => document.getElementById(id))

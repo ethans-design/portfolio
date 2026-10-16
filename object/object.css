@@ -1,15 +1,16 @@
 * { margin: 0; padding: 0; box-sizing: border-box; }
 
 :root {
-  --bg: #0b0b0f;
-  --panel: #14141b;
-  --panel-2: #1a1a23;
-  --line: rgba(255, 255, 255, 0.09);
-  --text: #ece9f0;
-  --muted: #9a94ad;
-  --purple: #440f7c;
-  --purple-lite: #b98cff;
-  --pink: #ff0095;
+  --bg: #ffffff;
+  --panel: #f5f3f8;
+  --panel-2: #ffffff;
+  --line: rgba(48, 26, 75, 0.12);
+  --text: #1d1626;
+  --muted: #6b6474;
+  --purple: #301a4b;
+  --purple-lite: #3f6c51;
+  --pink: #3f6c51;
+  --spectrum: linear-gradient(90deg, #301a4b 0 62%, #3f6c51 0);
 }
 
 html { scroll-behavior: smooth; }
@@ -22,10 +23,13 @@ body {
   -webkit-font-smoothing: antialiased;
 }
 
-::selection { background: var(--purple); color: #fff; }
+::selection { background: var(--pink); color: #fff; }
+
+/* Two-tone stripe across the top, matching the homepage */
+body::before { content: ""; position: fixed; top: 0; left: 0; right: 0; height: 6px; background: var(--spectrum); z-index: 50; }
 :focus-visible { outline: 2px solid var(--pink); outline-offset: 3px; border-radius: 4px; }
 
-h1, h2, h3, .display { font-family: "digibop", sans-serif; text-transform: lowercase; line-height: 1.05; }
+h1, h2, h3, .display { font-family: "digibop", sans-serif; text-transform: lowercase; line-height: 1.05; color: var(--purple); }
 
 a { color: var(--purple-lite); text-decoration: none; }
 a:hover { color: var(--pink); }
@@ -47,6 +51,7 @@ a:hover { color: var(--pink); }
 }
 .brand .kicker { font-size: 0.72rem; letter-spacing: 0.22em; text-transform: uppercase; color: var(--pink); }
 .brand h1 { font-size: 2.6rem; margin-top: 4px; }
+.brand h1::after { content: ""; display: block; width: 72px; height: 6px; margin-top: 8px; border-radius: 3px; background: var(--spectrum); }
 .brand .sub { font-size: 0.82rem; color: var(--muted); margin-top: 6px; letter-spacing: 0.02em; }
 
 .nav { display: flex; flex-direction: column; gap: 2px; margin-top: 4px; }
@@ -102,7 +107,7 @@ main { padding: 46px clamp(24px, 5vw, 64px) 100px; min-width: 0; }
 .media-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: 18px; }
 .slot { display: flex; flex-direction: column; gap: 8px; }
 .slot .ph {
-  aspect-ratio: 4 / 3; border: 1.5px dashed rgba(255,255,255,0.16); border-radius: 12px;
+  aspect-ratio: 4 / 3; border: 1.5px dashed rgba(48,26,75,0.2); border-radius: 12px;
   background: var(--panel);
   display: flex; align-items: center; justify-content: center; position: relative;
   color: var(--muted); font-size: 0.78rem; letter-spacing: 0.14em; text-transform: uppercase; font-weight: 700;
@@ -128,7 +133,7 @@ main { padding: 46px clamp(24px, 5vw, 64px) 100px; min-width: 0; }
 .slot img { border: 1px solid var(--line); }
 
 /* Chair, Bag & Lamp — background-removed cutouts */
-.media-grid.cutouts { grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); max-width: 980px; }
+.media-grid.cutouts { grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); max-width: 780px; }
 .cutouts .slot img {
   border: none; border-radius: 14px; background: radial-gradient(circle at 50% 40%, var(--panel-2), var(--panel) 70%);
   aspect-ratio: 4 / 5; object-fit: contain; padding: 18px;
@@ -151,7 +156,7 @@ main { padding: 46px clamp(24px, 5vw, 64px) 100px; min-width: 0; }
 
 /* Tech Tinder — full slides */
 .slides { display: flex; flex-direction: column; gap: 22px; margin-top: 10px; max-width: 980px; }
-.slide { width: 100%; height: auto; display: block; border-radius: 12px; border: 1px solid var(--line); box-shadow: 0 14px 40px rgba(0,0,0,0.35); }
+.slide { width: 100%; height: auto; display: block; border-radius: 12px; border: 1px solid var(--line); box-shadow: 8px 8px 0 var(--purple-lite); }
 
 /* Tech Tinder — car comparison */
 .compare { display: grid; grid-template-columns: 1fr 1fr; gap: 22px; margin-top: 10px; align-items: start; }
