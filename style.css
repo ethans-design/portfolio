@@ -5,27 +5,23 @@
   box-sizing: border-box;
 }
 
-/* Palette — white page, ink type, Polaroid-style spectrum for pops of color */
+/* Palette — white page with Dark Amethyst and Hunter Green */
 :root {
   --bg: #ffffff;
-  --paper: #f6f6f4;
-  --ink: #141414;
-  --ink-soft: #3d3d3d;
-  --muted: #77777a;
-  --line: rgba(20, 20, 20, 0.1);
+  --paper: #f5f3f8;
+  --ink: #1d1626;
+  --ink-soft: #463f50;
+  --muted: #7a7482;
+  --line: rgba(48, 26, 75, 0.12);
 
-  --red: #e8202a;
-  --orange: #f7941d;
-  --yellow: #ffc20e;
-  --green: #3db54a;
-  --blue: #0098db;
-  --purple: #7a4ea3;
+  --amethyst: #301a4b;
+  --amethyst-soft: #ece6f3;
+  --green: #3f6c51;
+  --green-soft: #e3eee7;
 
-  --spectrum: linear-gradient(90deg,
-    var(--red) 0 16.66%, var(--orange) 0 33.33%, var(--yellow) 0 50%,
-    var(--green) 0 66.66%, var(--blue) 0 83.33%, var(--purple) 0);
+  --duo: linear-gradient(90deg, var(--amethyst) 0 62%, var(--green) 0);
 
-  --accent: var(--blue);
+  --accent: var(--amethyst);
 }
 
 /* Global */
@@ -42,7 +38,7 @@ body {
   -webkit-font-smoothing: antialiased;
 }
 
-/* Spectrum stripe across the top of the page */
+/* Two-tone stripe across the top of the page */
 body::before {
   content: "";
   position: fixed;
@@ -50,17 +46,17 @@ body::before {
   left: 0;
   right: 0;
   height: 6px;
-  background: var(--spectrum);
+  background: var(--duo);
   z-index: 50;
 }
 
 ::selection {
-  background: var(--yellow);
-  color: var(--ink);
+  background: var(--green);
+  color: #fff;
 }
 
 :focus-visible {
-  outline: 2px solid var(--blue);
+  outline: 2px solid var(--green);
   outline-offset: 3px;
   border-radius: 4px;
 }
@@ -78,7 +74,7 @@ p {
   color: #fff;
   padding: 8px 12px;
   border-radius: 8px;
-  border: 2px solid var(--yellow);
+  border: 2px solid var(--green);
   z-index: 60;
 }
 .skip-link:focus { top: 14px; }
@@ -91,7 +87,7 @@ p {
   width: 220px;
   padding: 20px;
   background: var(--bg);
-  border: 2px solid var(--ink);
+  border: 2px solid var(--amethyst);
   border-radius: 14px;
   display: flex;
   flex-direction: column;
@@ -116,14 +112,14 @@ p {
   font-family: "digibop", sans-serif;
   font-size: 1.6rem;
   line-height: 1.05;
-  color: var(--ink);
+  color: var(--amethyst);
 }
 
 .sidebar-stripe {
   height: 6px;
   margin: 16px 0 6px;
   border-radius: 3px;
-  background: var(--spectrum);
+  background: var(--duo);
 }
 
 .sidebar-list {
@@ -132,12 +128,12 @@ p {
 }
 
 /* Menu links — each carries its own color */
-.sidebar-list > li:nth-child(1) { --accent: var(--red); }
-.sidebar-list > li:nth-child(2) { --accent: var(--blue); }
-.sidebar-list > li:nth-child(3) { --accent: var(--green); }
-.submenu li:nth-child(1) { --accent: var(--orange); }
+.sidebar-list > li:nth-child(1) { --accent: var(--amethyst); }
+.sidebar-list > li:nth-child(2) { --accent: var(--green); }
+.sidebar-list > li:nth-child(3) { --accent: var(--amethyst); }
+.submenu li:nth-child(1) { --accent: var(--amethyst); }
 .submenu li:nth-child(2) { --accent: var(--green); }
-.submenu li:nth-child(3) { --accent: var(--purple); }
+.submenu li:nth-child(3) { --accent: var(--amethyst); }
 
 .nav-link {
   display: flex;
@@ -163,7 +159,7 @@ p {
 }
 
 .nav-link:hover {
-  background: var(--paper);
+  background: var(--amethyst-soft);
   transform: translateX(4px);
 }
 
@@ -241,7 +237,7 @@ p {
 }
 
 .footer-link:hover {
-  background: var(--ink);
+  background: var(--green);
   color: #fff;
   transform: translateX(4px);
 }
@@ -262,24 +258,25 @@ section:last-of-type {
   border-bottom: none;
 }
 
-#about { --accent: var(--red); }
-#projects { --accent: var(--blue); }
-#skills { --accent: var(--green); }
-#tools { --accent: var(--orange); }
+#about { --accent: var(--amethyst); }
+#projects { --accent: var(--green); }
+#skills { --accent: var(--amethyst); }
+#tools { --accent: var(--amethyst); }
 #games { --accent: var(--green); }
-#designs { --accent: var(--purple); }
+#designs { --accent: var(--amethyst); }
 
 /* Headings */
 h1, h2, h3 {
   font-family: "digibop", sans-serif;
   text-transform: lowercase;
+  color: var(--amethyst);
 }
 
 h1 { font-size: 3rem; margin-bottom: 28px; }
 h2 { font-size: 2.2rem; margin-bottom: 18px; }
 h3 { font-size: 1.6rem; }
 
-/* Section titles get a spectrum underline */
+/* Section titles get a two-tone underline */
 section > h1::after {
   content: "";
   display: block;
@@ -287,7 +284,7 @@ section > h1::after {
   height: 8px;
   margin-top: 10px;
   border-radius: 4px;
-  background: var(--spectrum);
+  background: var(--duo);
 }
 
 /* Sub-headings get a colored square */
@@ -315,13 +312,13 @@ section > h1::after {
   align-items: start;
 }
 
-/* Photo framed in a spectrum ring */
+/* Photo framed in a two-tone ring */
 .about-photo {
   width: 220px;
   aspect-ratio: 1 / 1;
   border-radius: 50%;
   padding: 6px;
-  background: conic-gradient(var(--red), var(--orange), var(--yellow), var(--green), var(--blue), var(--purple), var(--red));
+  background: conic-gradient(from 200deg, var(--amethyst), var(--green), var(--amethyst));
 }
 
 .about-photo img {
@@ -357,7 +354,7 @@ section > h1::after {
 .project-card {
   border-radius: 14px;
   overflow: hidden;
-  border: 2px solid var(--ink);
+  border: 2px solid var(--amethyst);
   background: var(--bg);
   transition: transform 0.2s, box-shadow 0.2s;
 }
@@ -374,7 +371,7 @@ section > h1::after {
 .project-media {
   aspect-ratio: 16/9;
   overflow: hidden;
-  border-bottom: 2px solid var(--ink);
+  border-bottom: 2px solid var(--amethyst);
   background: var(--paper);
 }
 
@@ -425,7 +422,7 @@ section > h1::after {
   display: inline-block;
   padding: 10px 14px;
   border-radius: 10px;
-  border: 2px solid var(--ink);
+  border: 2px solid var(--amethyst);
   background: var(--bg);
   color: var(--ink);
   text-decoration: none;
@@ -442,7 +439,7 @@ section > h1::after {
   border-color: var(--accent);
   color: #fff;
   transform: translate(-2px, -2px);
-  box-shadow: 4px 4px 0 var(--ink);
+  box-shadow: 4px 4px 0 var(--amethyst);
 }
 
 /* Responsive */
@@ -477,7 +474,7 @@ section > h1::after {
   height: 100%;
 }
 
-/* Skills list — bullets cycle through the spectrum */
+/* Skills list — bullets alternate amethyst and green */
 .dashed-list {
   list-style: none;
   max-width: 720px;
@@ -500,13 +497,9 @@ section > h1::after {
   height: 11px;
   border-radius: 2px;
   transform: translateY(-50%) rotate(45deg);
-  background: var(--red);
+  background: var(--amethyst);
 }
-.dashed-list li:nth-child(6n+2)::before { background: var(--orange); }
-.dashed-list li:nth-child(6n+3)::before { background: var(--yellow); }
-.dashed-list li:nth-child(6n+4)::before { background: var(--green); }
-.dashed-list li:nth-child(6n+5)::before { background: var(--blue); }
-.dashed-list li:nth-child(6n+6)::before { background: var(--purple); }
+.dashed-list li:nth-child(even)::before { background: var(--green); }
 
 /* Footer */
 .site-footer {
@@ -542,8 +535,8 @@ section > h1::after {
   max-width: 100%;
   max-height: 80vh;
   border-radius: 14px;
-  border: 2px solid var(--ink);
-  box-shadow: 10px 10px 0 var(--purple);
+  border: 2px solid var(--amethyst);
+  box-shadow: 10px 10px 0 var(--green);
 }
 
 .lightbox figcaption {
@@ -568,7 +561,7 @@ section > h1::after {
 }
 
 .lightbox-close:hover {
-  color: var(--red);
+  color: var(--green);
   transform: scale(1.1);
 }
 
@@ -592,7 +585,7 @@ section > h1::after {
   margin-top: 12px;
   padding: 8px 12px;
   border-radius: 10px;
-  border: 2px solid var(--ink);
+  border: 2px solid var(--amethyst);
   font-weight: 800;
   text-transform: lowercase;
   transition: background 0.2s, color 0.2s, transform 0.2s;
