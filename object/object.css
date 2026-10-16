@@ -119,6 +119,10 @@ main { padding: 46px clamp(24px, 5vw, 64px) 100px; min-width: 0; }
 
 .spanning { grid-column: 1 / -1; }
 
+/* Motor Buffet — videos */
+.media-grid.videos { grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); margin-top: 18px; }
+.slot video { background: #000; border: 1px solid var(--line); max-height: 70vh; object-fit: contain; }
+
 /* 3 Pet Peeves */
 .peeves { display: grid; gap: 16px; margin-top: 12px; max-width: 840px; }
 .peeve {
