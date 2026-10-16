@@ -48,47 +48,27 @@ body::before {
   z-index: 50;
 }
 
-/* Abstract background — light solid circles (and a few squares) along both sides of the page */
-body {
-  position: relative;
-}
-
-.bg-art {
-  position: absolute;
+/* Three stripes down the right edge: green, green, amethyst */
+body::after {
+  content: "";
+  position: fixed;
   top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  z-index: -1;
+  right: 0;
+  bottom: 0;
+  width: 46px;
+  background: linear-gradient(90deg,
+    var(--green) 0 10px, transparent 0 18px,
+    var(--green) 0 28px, transparent 0 36px,
+    var(--amethyst) 0 46px);
+  z-index: 40;
   pointer-events: none;
-  overflow: hidden;
 }
 
-.bg-art > * {
-  position: absolute;
-}
-
-.bg-art .circle { border-radius: 50%; }
-.bg-art .b1 { width: 420px; height: 420px; top: -3%; right: -200px; background: var(--amethyst-soft); }
-.bg-art .b2 { width: 150px; height: 150px; top: 6%; left: 150px; background: var(--green-soft); }
-.bg-art .b3 { width: 90px; height: 90px; top: 13%; right: 3%; background: var(--green-soft); }
-.bg-art .b4 { width: 130px; height: 130px; top: 19%; right: -50px; background: var(--amethyst-soft); transform: rotate(12deg); }
-.bg-art .b5 { width: 220px; height: 220px; top: 25%; left: 110px; background: var(--amethyst-soft); }
-.bg-art .b6 { width: 280px; height: 280px; top: 33%; right: -140px; background: var(--green-soft); }
-.bg-art .b7 { width: 70px; height: 70px; top: 41%; left: 215px; background: var(--green-soft); }
-.bg-art .b8 { width: 120px; height: 120px; top: 47%; right: 4%; background: var(--amethyst-soft); }
-.bg-art .b9 { width: 170px; height: 170px; top: 54%; left: 130px; background: var(--green-soft); transform: rotate(-8deg); }
-.bg-art .b10 { width: 340px; height: 340px; top: 60%; right: -170px; background: var(--amethyst-soft); }
-.bg-art .b11 { width: 100px; height: 100px; top: 69%; left: 180px; background: var(--amethyst-soft); }
-.bg-art .b12 { width: 200px; height: 200px; top: 75%; right: -60px; background: var(--green-soft); }
-.bg-art .b13 { width: 260px; height: 260px; top: 82%; left: 80px; background: var(--green-soft); }
-.bg-art .b14 { width: 110px; height: 110px; top: 88%; right: 5%; background: var(--amethyst-soft); transform: rotate(15deg); }
-.bg-art .b15 { width: 380px; height: 380px; top: 93%; right: -190px; background: var(--green-soft); }
-
-/* Left-side shapes tuck in beside the sidebar; on phones they hug the page edge instead */
 @media (max-width: 768px) {
-  .bg-art .b2, .bg-art .b5, .bg-art .b7, .bg-art .b9, .bg-art .b11, .bg-art .b13 { left: -60px; }
-  .bg-art .b3, .bg-art .b8, .bg-art .b14 { display: none; }
+  body::after { width: 23px; background: linear-gradient(90deg,
+    var(--green) 0 5px, transparent 0 9px,
+    var(--green) 0 14px, transparent 0 18px,
+    var(--amethyst) 0 23px); }
 }
 
 ::selection {
@@ -282,7 +262,7 @@ p {
 /* Content */
 .content {
   margin-left: 260px;
-  padding: 26px 20px 20px;
+  padding: 26px 66px 20px 20px; /* right padding clears the side stripes */
 }
 
 section {
@@ -482,11 +462,12 @@ section > h1::after {
     position: static;
     width: auto;
     height: auto;
-    margin: 20px 12px;
+    margin: 20px 32px 20px 12px;
   }
 
   .content {
     margin-left: 0;
+    padding-right: 32px;
   }
 
   .about-wrapper {
