@@ -32,7 +32,7 @@ body {
   color: var(--ink);
   font-family: "acumin-pro", sans-serif;
   overflow-x: hidden;
-  cursor: url("assets/crosshair.png") 16 16, crosshair;
+  cursor: url("assets/cursor.png") 3 2, auto;
   -webkit-font-smoothing: antialiased;
 }
 
