@@ -191,17 +191,16 @@ p {
 
 .sidebar-header {
   display: flex;
-  flex-direction: column;
   align-items: center;
-  gap: 10px;
-  text-align: center;
+  justify-content: center;
+  gap: 12px;
 }
 
 .sidebar-logo {
-  width: 96px;
+  width: 64px;
   height: auto;
   display: block;
-  filter: invert(1); /* the logo is white line art; flip it to ink on the white page */
+  flex-shrink: 0;
 }
 
 .sidebar-title {
@@ -476,8 +475,25 @@ section > h1::after {
 }
 
 .project-body h3 {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 12px;
   font-size: 1.35rem;
   margin-bottom: 4px;
+}
+
+/* Arrow next to each project title */
+.project-body h3::after {
+  content: "→";
+  font-family: "acumin-pro", sans-serif;
+  font-weight: 700;
+  color: var(--green);
+  transition: transform 0.2s;
+}
+
+.project-card:hover h3::after {
+  transform: translateX(4px);
 }
 
 .project-body p {
@@ -509,33 +525,6 @@ section > h1::after {
 
 .projects-grid--compact h3 {
   font-size: 1.3rem;
-}
-
-/* CTA button */
-.project-cta {
-  margin-top: 4px;
-}
-
-.project-btn {
-  display: inline-block;
-  padding: 9px 14px;
-  border-radius: 999px;
-  border: 1.5px solid var(--amethyst);
-  background: var(--bg);
-  color: var(--ink);
-  text-decoration: none;
-  font-family: inherit;
-  font-size: 1rem;
-  font-weight: 800;
-  text-transform: lowercase;
-  cursor: inherit;
-  transition: background 0.2s, color 0.2s, transform 0.2s, box-shadow 0.2s;
-}
-
-.project-btn:hover {
-  background: var(--amethyst);
-  border-color: var(--amethyst);
-  color: #fff;
 }
 
 /* Responsive */
