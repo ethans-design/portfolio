@@ -1,0 +1,65 @@
+/* Shared look for project pages: palette, fonts, cursor and the homepage's
+   three-stripe bands (top, bottom and down the right side). Load it after the
+   page's own stylesheet. */
+
+:root {
+  --site-bg: #fff;
+  --site-amethyst: #301a4b;
+  --site-green: #3f6c51;
+}
+
+body {
+  position: relative;
+  display: flow-root;
+  background: var(--site-bg);
+  font-family: "acumin-pro", system-ui, sans-serif;
+  cursor: url("crosshair.png") 16 16, crosshair;
+  padding: 106px 106px 106px 0;
+  min-height: 100vh;
+}
+
+h1, h2, h3 { font-family: "digibop", sans-serif; }
+
+body::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 60;
+  background:
+    linear-gradient(180deg, var(--site-amethyst) 0 10px, transparent 0 18px, var(--site-green) 0 28px, transparent 0 36px, var(--site-green) 0 46px)
+      0 40px / 100% 46px no-repeat,
+    linear-gradient(180deg, var(--site-green) 0 10px, transparent 0 18px, var(--site-green) 0 28px, transparent 0 36px, var(--site-amethyst) 0 46px)
+      0 calc(100% - 40px) / 100% 46px no-repeat;
+}
+
+body::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  right: 40px;
+  bottom: 0;
+  width: 46px;
+  pointer-events: none;
+  z-index: 60;
+  background: linear-gradient(90deg, var(--site-green) 0 10px, transparent 0 18px, var(--site-green) 0 28px, transparent 0 36px, var(--site-amethyst) 0 46px);
+}
+
+a, button, .chip, .gen-chip { cursor: pointer; }
+input { cursor: text; }
+
+@media (max-width: 768px) {
+  body { padding: 63px 46px 63px 0; }
+  body::before {
+    background:
+      linear-gradient(180deg, var(--site-amethyst) 0 5px, transparent 0 9px, var(--site-green) 0 14px, transparent 0 18px, var(--site-green) 0 23px)
+        0 20px / 100% 23px no-repeat,
+      linear-gradient(180deg, var(--site-green) 0 5px, transparent 0 9px, var(--site-green) 0 14px, transparent 0 18px, var(--site-amethyst) 0 23px)
+        0 calc(100% - 20px) / 100% 23px no-repeat;
+  }
+  body::after {
+    right: 14px;
+    width: 23px;
+    background: linear-gradient(90deg, var(--site-green) 0 5px, transparent 0 9px, var(--site-green) 0 14px, transparent 0 18px, var(--site-amethyst) 0 23px);
+  }
+}
