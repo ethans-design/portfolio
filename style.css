@@ -48,12 +48,17 @@ body::before {
   z-index: 50;
 }
 
-/* Three stripes down the right edge: green, green, amethyst */
+/* Three stripes down the right side of the whole page: green, green, amethyst */
+body {
+  position: relative;
+  display: flow-root; /* stop child margins collapsing, so the stripes start at the very top */
+}
+
 body::after {
   content: "";
-  position: fixed;
+  position: absolute;
   top: 0;
-  right: 0;
+  right: 40px;
   bottom: 0;
   width: 46px;
   background: linear-gradient(90deg,
@@ -65,7 +70,7 @@ body::after {
 }
 
 @media (max-width: 768px) {
-  body::after { width: 23px; background: linear-gradient(90deg,
+  body::after { right: 14px; width: 23px; background: linear-gradient(90deg,
     var(--green) 0 5px, transparent 0 9px,
     var(--green) 0 14px, transparent 0 18px,
     var(--amethyst) 0 23px); }
@@ -262,7 +267,7 @@ p {
 /* Content */
 .content {
   margin-left: 260px;
-  padding: 26px 66px 20px 20px; /* right padding clears the side stripes */
+  padding: 26px 106px 20px 20px; /* right padding clears the side stripes */
 }
 
 section {
@@ -462,12 +467,12 @@ section > h1::after {
     position: static;
     width: auto;
     height: auto;
-    margin: 20px 32px 20px 12px;
+    margin: 20px 46px 20px 12px;
   }
 
   .content {
     margin-left: 0;
-    padding-right: 32px;
+    padding-right: 46px;
   }
 
   .about-wrapper {
