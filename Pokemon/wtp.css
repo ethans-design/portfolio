@@ -1,23 +1,24 @@
 * { box-sizing: border-box; margin: 0; padding: 0; }
 
 :root {
-  --bg: #0e1226;
-  --card: #181e3c;
-  --card-soft: #1f2650;
-  --line: rgba(255, 255, 255, 0.1);
-  --text: #f2f4ff;
-  --muted: #9aa3c7;
-  --red: #e3350d;
-  --red-soft: #ff5c3d;
-  --yellow: #ffcb05;
-  --good: #4ade80;
-  --bad: #ff6b6b;
+  --bg: #fff;
+  --card: #fff;
+  --card-soft: #f5f3f8;
+  --line: rgba(48, 26, 75, 0.12);
+  --text: #1d1626;
+  --muted: #6b6474;
+  --red: #301a4b;
+  --red-soft: #22123a;
+  --yellow: #3f6c51;
+  --good: #3f6c51;
+  --bad: #b3261e;
+  --amethyst: #301a4b;
 }
 
 body {
   background: var(--bg);
   color: var(--text);
-  font-family: system-ui, -apple-system, "Segoe UI", sans-serif;
+  font-family: "acumin-pro", system-ui, sans-serif;
   min-height: 100vh;
 }
 
@@ -32,10 +33,11 @@ body {
   background: var(--card);
   border-bottom: 1px solid var(--line);
   padding: 16px 0;
+  color: var(--amethyst);
 }
 
 .topbar-inner {
-  width: min(980px, 92vw);
+  width: min(980px, 92%);
   margin: 0 auto;
   display: flex;
   justify-content: space-between;
@@ -55,11 +57,11 @@ body {
   border-radius: 50%;
   background: linear-gradient(
     to bottom,
-    var(--red) 0 calc(50% - 1.5px),
-    var(--bg) calc(50% - 1.5px) calc(50% + 1.5px),
+    var(--amethyst) 0 calc(50% - 1.5px),
+    var(--amethyst) calc(50% - 1.5px) calc(50% + 1.5px),
     #fff calc(50% + 1.5px) 100%
   );
-  border: 2px solid #fff;
+  border: 2px solid var(--amethyst);
   position: relative;
   flex-shrink: 0;
 }
@@ -74,10 +76,11 @@ body {
   height: 9px;
   border-radius: 50%;
   background: #fff;
-  border: 2px solid var(--bg);
+  border: 2px solid var(--amethyst);
 }
 
 h1 {
+  color: var(--amethyst);
   font-size: 1.4rem;
   font-weight: 800;
   letter-spacing: 0.02em;
@@ -103,7 +106,7 @@ h1 {
 
 /* Layout */
 .container {
-  width: min(980px, 92vw);
+  width: min(980px, 92%);
   margin: 32px auto 64px;
 }
 
@@ -112,7 +115,7 @@ h1 {
   border: 1px solid var(--line);
   border-radius: 20px;
   overflow: hidden;
-  box-shadow: 0 24px 60px rgba(0, 0, 0, 0.45);
+  box-shadow: 0 20px 50px rgba(48, 26, 75, 0.08);
 }
 
 @media (min-width: 820px) {
@@ -125,8 +128,8 @@ h1 {
 /* Screen */
 .screen {
   background:
-    radial-gradient(circle at 50% 45%, rgba(255, 203, 5, 0.28), transparent 62%),
-    radial-gradient(circle at 50% 45%, #2c3670 0%, #131737 72%);
+    radial-gradient(circle at 50% 45%, #e3eee7 0%, #f5f3f8 72%);
+  border-right: 1px solid var(--line);
   display: flex;
   justify-content: center;
   align-items: center;
@@ -138,11 +141,11 @@ h1 {
   width: min(300px, 70vw);
   height: auto;
   transition: filter 0.35s ease;
-  filter: drop-shadow(0 14px 24px rgba(0, 0, 0, 0.5));
+  filter: drop-shadow(0 14px 18px rgba(48, 26, 75, 0.25));
 }
 
 #pokeImg.hidden-mon {
-  filter: brightness(0) drop-shadow(0 14px 24px rgba(0, 0, 0, 0.5));
+  filter: brightness(0) drop-shadow(0 14px 18px rgba(48, 26, 75, 0.25));
 }
 
 #pokeImg.loading {
@@ -191,7 +194,7 @@ h1 {
 .stat-value {
   font-size: 1.6rem;
   font-weight: 800;
-  color: var(--yellow);
+  color: var(--amethyst);
 }
 
 /* Generation selector */
@@ -235,14 +238,14 @@ h1 {
 }
 
 .gen-chip.active {
-  background: var(--yellow);
-  border-color: var(--yellow);
-  color: #1a1a05;
+  background: var(--amethyst);
+  border-color: var(--amethyst);
+  color: #fff;
 }
 
 .gen-chip--all.active {
   background: transparent;
-  color: var(--yellow);
+  color: var(--amethyst);
 }
 
 /* Guess input */
@@ -317,6 +320,7 @@ input.shake {
 .btn--primary {
   background: var(--red);
   border-color: var(--red);
+  color: #fff;
 }
 
 .btn--primary:hover:not(:disabled) {

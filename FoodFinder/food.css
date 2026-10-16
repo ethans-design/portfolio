@@ -1,22 +1,23 @@
 * { box-sizing: border-box; margin: 0; padding: 0; }
 
 :root {
-  --bg: #faf5ee;
-  --bg-warm: #f5ead9;
+  --bg: #fff;
+  --bg-warm: #fff;
   --card: #ffffff;
-  --ink: #2b211b;
-  --muted: #8a7c6f;
-  --line: #ece2d4;
-  --accent: #e85d3d;
-  --accent-dark: #d14a2b;
-  --accent-soft: #fdeee8;
-  --green: #3d9960;
+  --ink: #1d1626;
+  --muted: #6b6474;
+  --line: rgba(48, 26, 75, 0.12);
+  --accent: #301a4b;
+  --accent-dark: #22123a;
+  --accent-soft: #ece6f3;
+  --green: #3f6c51;
+  --panel: #f5f3f8;
 }
 
 body {
   background: linear-gradient(180deg, var(--bg-warm), var(--bg) 400px);
   color: var(--ink);
-  font-family: system-ui, -apple-system, "Segoe UI", sans-serif;
+  font-family: "acumin-pro", system-ui, sans-serif;
   min-height: 100vh;
 }
 
@@ -38,7 +39,7 @@ body {
 }
 
 .topbar-inner {
-  width: min(860px, 92vw);
+  width: min(860px, 92%);
   margin: 0 auto;
   display: flex;
   justify-content: space-between;
@@ -49,6 +50,7 @@ body {
 .brand {
   font-size: 1.2rem;
   font-weight: 800;
+  color: var(--accent);
 }
 
 .back {
@@ -68,7 +70,7 @@ body {
 
 /* Layout */
 .app {
-  width: min(860px, 92vw);
+  width: min(860px, 92%);
   margin: 0 auto;
   padding: 40px 0 80px;
 }
@@ -79,6 +81,16 @@ body {
   font-size: clamp(2.2rem, 6vw, 3.4rem);
   font-weight: 900;
   letter-spacing: -0.03em;
+  color: var(--accent);
+}
+
+.hero h2::after {
+  content: "";
+  display: block;
+  width: 56px;
+  height: 4px;
+  margin: 14px auto 0;
+  background: var(--green);
 }
 
 .hero p { margin-top: 10px; color: var(--muted); font-size: 1.05rem; }
@@ -89,7 +101,7 @@ body {
   border: 1px solid var(--line);
   border-radius: 24px;
   padding: 28px;
-  box-shadow: 0 20px 50px rgba(96, 70, 40, 0.1);
+  box-shadow: 0 20px 50px rgba(48, 26, 75, 0.08);
   display: grid;
   gap: 22px;
 }
@@ -159,13 +171,13 @@ body {
   font-size: 1.1rem;
   cursor: pointer;
   transition: background 0.2s, transform 0.15s, box-shadow 0.2s;
-  box-shadow: 0 10px 24px rgba(232, 93, 61, 0.35);
+  box-shadow: 0 10px 24px rgba(48, 26, 75, 0.25);
 }
 
 .cta:hover {
   background: var(--accent-dark);
   transform: translateY(-2px);
-  box-shadow: 0 14px 30px rgba(232, 93, 61, 0.45);
+  box-shadow: 0 14px 30px rgba(48, 26, 75, 0.35);
 }
 
 /* Results */
@@ -181,7 +193,7 @@ body {
   margin-bottom: 18px;
 }
 
-.result-head h2 { font-size: 1.7rem; font-weight: 900; letter-spacing: -0.02em; }
+.result-head h2 { color: var(--accent); font-size: 1.7rem; font-weight: 900; letter-spacing: -0.02em; }
 
 .reroll {
   padding: 10px 16px;
@@ -205,7 +217,7 @@ body {
   border: 1px solid var(--line);
   border-radius: 22px;
   padding: 24px;
-  box-shadow: 0 14px 36px rgba(96, 70, 40, 0.08);
+  box-shadow: 0 14px 36px rgba(48, 26, 75, 0.06);
 }
 
 .food-result--top { border: 2px solid var(--accent); }
@@ -254,10 +266,10 @@ body {
   display: block;
   height: 100%;
   border-radius: 999px;
-  background: linear-gradient(90deg, var(--accent), #f0955c);
+  background: var(--green);
 }
 
-.food-result h3 { font-size: 1.5rem; font-weight: 900; margin-top: 2px; }
+.food-result h3 { color: var(--accent); font-size: 1.5rem; font-weight: 900; margin-top: 2px; }
 
 .fr-budget { color: var(--green); font-size: 1rem; font-weight: 800; margin-left: 4px; }
 
@@ -271,7 +283,7 @@ body {
 
 .reasons li {
   background: var(--accent-soft);
-  color: #a4432c;
+  color: var(--accent);
   border-radius: 999px;
   padding: 6px 12px;
   font-size: 0.85rem;
@@ -280,7 +292,7 @@ body {
 
 .order-box {
   margin-top: 16px;
-  background: #fbf7f0;
+  background: var(--panel);
   border: 1px solid var(--line);
   border-radius: 14px;
   padding: 14px 16px;
@@ -308,14 +320,14 @@ body {
   content: "→";
   position: absolute;
   left: 0;
-  color: var(--accent);
+  color: var(--green);
   font-weight: 800;
 }
 
 .pro-tip {
   margin-top: 14px;
   font-size: 0.92rem;
-  color: #6b5d4f;
+  color: var(--muted);
   line-height: 1.55;
 }
 
@@ -331,7 +343,7 @@ body {
   padding: 11px 16px;
   border-radius: 12px;
   border: none;
-  background: var(--ink);
+  background: var(--green);
   color: #fff;
   font-family: inherit;
   font-weight: 800;
@@ -340,7 +352,7 @@ body {
   transition: background 0.2s, transform 0.15s;
 }
 
-.nearby-btn:hover:not(:disabled) { background: #46372c; transform: translateY(-1px); }
+.nearby-btn:hover:not(:disabled) { background: #335a43; transform: translateY(-1px); }
 .nearby-btn:disabled { opacity: 0.6; cursor: wait; }
 
 .maps-link {
@@ -374,7 +386,7 @@ body {
   gap: 12px;
   flex-wrap: wrap;
   padding: 10px 14px;
-  background: #fbf7f0;
+  background: var(--panel);
   border: 1px solid var(--line);
   border-radius: 12px;
 }

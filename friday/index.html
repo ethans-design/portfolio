@@ -6,6 +6,8 @@
   <title>Friday — Ethan Saunders</title>
   <meta name="description" content="Friday — a voice-first personal AI that filters your attention through your goals. Built in Python with the OpenAI Realtime API." />
   <link rel="stylesheet" href="friday.css" />
+  <link rel="stylesheet" href="../assets/subpage.css" />
+  <link rel="icon" type="image/png" href="../assets/EthanFace.png" />
   <link rel="stylesheet" href="https://use.typekit.net/kjc2rnh.css" />
 </head>
 <body>
@@ -69,148 +71,47 @@
       <div class="wrap">
         <h2>what it is</h2>
         <p class="lead">
-          I got tired of AI tools that forget everything between conversations. Friday holds your
-          goals in context — so when you ask it to check your email, it tells you what's actually
-          relevant, not just what arrived. Say “friday” from anywhere and it's instant. No clicking,
-          no opening apps.
+          An AI assistant you talk to out loud. It remembers your goals, so when you ask it
+          something, it answers with what actually matters to you. Just say “friday”.
         </p>
 
         <div class="feature-grid">
           <div class="feature">
-            <h3>goals-first system prompt</h3>
-            <p>your goals inject into every session, so responses are always filtered through what matters</p>
+            <h3>knows your goals</h3>
+            <p>every answer is filtered through what you're working toward</p>
           </div>
           <div class="feature">
-            <h3>always-on voice</h3>
-            <p>a persistent websocket means no delay on wake — the conversation starts the moment it hears “friday”</p>
+            <h3>instant voice</h3>
+            <p>always listening for “friday”, with no wait to connect</p>
           </div>
           <div class="feature">
-            <h3>mobile pwa</h3>
-            <p>a cloudflare tunnel auto-starts on launch — https in seconds, installable to your home screen</p>
+            <h3>remembers</h3>
+            <p>what you tell it carries over to the next conversation</p>
           </div>
           <div class="feature">
-            <h3>persistent memory</h3>
-            <p>facts from each conversation carry forward, tied to your active goals</p>
+            <h3>works on your phone</h3>
+            <p>open a link, add it to your home screen, and talk</p>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- HOW IT WORKS -->
-    <section class="bordered" id="architecture">
-      <div class="wrap">
-        <h2>how it works</h2>
-        <p class="eyebrow eyebrow--lead">the interesting parts</p>
-
-        <div class="cards">
-          <div class="card">
-            <div class="num">01</div>
-            <h3>shared mic queue</h3>
-            <p>
-              Windows won't open the same audio device twice. My first version ran two separate
-              streams that silently conflicted — nothing worked and I had no idea why.
-            </p>
-            <p>
-              The fix was one <code>sd.RawInputStream</code> feeding a thread-safe queue, with the
-              realtime loop resampling on the fly via <code>audioop.ratecv</code>.
-            </p>
-          </div>
-
-          <div class="card">
-            <div class="num">02</div>
-            <h3>always-on websocket</h3>
-            <p>
-              Connecting to OpenAI's Realtime API takes 2–3 seconds. Opening a new connection on
-              every wake word would feel broken.
-            </p>
-            <p>
-              Instead the connection stays open permanently. A flag flips when “friday” is heard and
-              audio starts flowing — the conversation is instant.
-            </p>
-          </div>
-
-          <div class="card">
-            <div class="num">03</div>
-            <h3>tool executor</h3>
-            <p>
-              Things like fetching email or hitting the Govee API are slow. Running them inline would
-              freeze the voice session.
-            </p>
-            <p>
-              A <code>ThreadPoolExecutor</code> runs tools off the event loop, and a flag pauses the
-              silence timer so the session doesn't die mid-tool-call.
-            </p>
-          </div>
-
-          <div class="card">
-            <div class="num">04</div>
-            <h3>https in one command</h3>
-            <p>
-              Phone browsers block mic access without HTTPS, and certificates are a pain. So Friday
-              just auto-starts a Cloudflare tunnel on launch.
-            </p>
-            <p>
-              The URL is parsed from stdout within a few seconds. Open it on your phone and the mic
-              button works.
-            </p>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- INTEGRATIONS -->
+    <!-- WHAT IT CAN DO -->
     <section class="bordered" id="integrations">
       <div class="wrap">
-        <h2>integrations</h2>
-        <div class="int-grid">
-          <div class="int">
-            <h3>communication</h3>
-            <ul>
-              <li>Gmail — read, search, reply, send</li>
-              <li>Google Calendar — events + invites</li>
-              <li>Phone notifications via ntfy.sh</li>
-            </ul>
-          </div>
-          <div class="int">
-            <h3>environment</h3>
-            <ul>
-              <li>Spotify — play, skip, volume</li>
-              <li>Govee smart lights — color + brightness</li>
-              <li>Weather — current + forecast</li>
-            </ul>
-          </div>
-          <div class="int">
-            <h3>information</h3>
-            <ul>
-              <li>Web search via DuckDuckGo</li>
-              <li>News headlines + topic search</li>
-              <li>Live sports scores — ESPN API</li>
-            </ul>
-          </div>
-          <div class="int">
-            <h3>productivity</h3>
-            <ul>
-              <li>Goals — persistent, priority-ranked</li>
-              <li>To-do list — sorted by goal alignment</li>
-              <li>Reminders — voice-set push notifications</li>
-            </ul>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- TECH STACK -->
-    <section class="bordered" id="stack">
-      <div class="wrap">
-        <h2>tech stack</h2>
-        <div class="stack">
-          <div class="stack-row"><span class="k">voice / ai</span><span class="v">OpenAI Realtime API — gpt-4o-mini-realtime</span></div>
-          <div class="stack-row"><span class="k">wake word</span><span class="v">Vosk — offline, no API key</span></div>
-          <div class="stack-row"><span class="k">audio</span><span class="v">sounddevice + audioop (stdlib resampling)</span></div>
-          <div class="stack-row"><span class="k">backend</span><span class="v">Python 3.11, asyncio, ThreadPoolExecutor</span></div>
-          <div class="stack-row"><span class="k">gui</span><span class="v">pywebview + WebSockets</span></div>
-          <div class="stack-row"><span class="k">mobile</span><span class="v">PWA + Cloudflare Tunnel (auto-started)</span></div>
-          <div class="stack-row"><span class="k">apis</span><span class="v">Google (OAuth2), Govee, Spotipy, ESPN, ntfy.sh</span></div>
+        <h2>what it can do</h2>
+        <div class="chips chips--big">
+          <span class="chip">gmail</span>
+          <span class="chip">google calendar</span>
+          <span class="chip">phone notifications</span>
+          <span class="chip">spotify</span>
+          <span class="chip">smart lights</span>
+          <span class="chip">weather</span>
+          <span class="chip">web search</span>
+          <span class="chip">news</span>
+          <span class="chip">sports scores</span>
+          <span class="chip">to-do list</span>
+          <span class="chip">reminders</span>
         </div>
       </div>
     </section>
@@ -219,7 +120,7 @@
     <section class="bordered cta">
       <div class="wrap">
         <h2>see the code</h2>
-        <p>full source on github — architecture, setup, and design decisions in the readme.</p>
+        <p>the full source and setup steps are on github.</p>
         <a class="btn btn--primary" href="https://github.com/ethans-design/friday" target="_blank" rel="noopener">
           github.com/ethans-design/friday →
         </a>
