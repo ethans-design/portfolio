@@ -214,6 +214,9 @@ h2::after {
   margin-bottom: 44px;
 }
 
+.chips--big { margin-bottom: 0; gap: 10px; }
+.chips--big .chip { font-size: 0.95rem; padding: 8px 16px; }
+
 /* ── FEATURES ── */
 .feature-grid {
   display: grid;

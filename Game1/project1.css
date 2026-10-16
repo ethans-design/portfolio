@@ -49,7 +49,7 @@ h1 {
 }
 
 .wrap {
-  min-height: calc(100vh - 290px);
+  min-height: calc(100vh - 80px);
   display: grid;
   place-items: center;
   align-content: center;
