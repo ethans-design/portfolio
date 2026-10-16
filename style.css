@@ -48,10 +48,17 @@ body::before {
   z-index: 50;
 }
 
-/* Abstract background — simple shapes, kept faint so content stays readable */
+/* Abstract background — solid circles and squares spread down the whole page */
+body {
+  position: relative;
+}
+
 .bg-art {
-  position: fixed;
-  inset: 0;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
   z-index: -1;
   pointer-events: none;
   overflow: hidden;
@@ -61,86 +68,28 @@ body::before {
   position: absolute;
 }
 
-.shape-sun {
-  width: 460px;
-  height: 460px;
-  top: -170px;
-  right: -140px;
-  border-radius: 50%;
-  background: var(--amethyst);
-  opacity: 0.07;
-}
+.bg-art .circle { border-radius: 50%; }
+.bg-art .b1 { width: 420px; height: 420px; top: -2%; right: -140px; background: var(--amethyst-soft); }
+.bg-art .b2 { width: 70px; height: 70px; top: 7%; right: 6%; background: var(--green); transform: rotate(20deg); }
+.bg-art .b3 { width: 36px; height: 36px; top: 14%; right: 14%; background: var(--amethyst); }
+.bg-art .b4 { width: 260px; height: 260px; top: 19%; left: -120px; background: var(--green-soft); transform: rotate(-15deg); }
+.bg-art .b5 { width: 190px; height: 190px; top: 29%; right: -60px; background: var(--green-soft); }
+.bg-art .b6 { width: 44px; height: 44px; top: 36%; right: 9%; background: var(--amethyst); transform: rotate(-8deg); }
+.bg-art .b7 { width: 320px; height: 320px; top: 45%; left: 12%; background: var(--amethyst-soft); }
+.bg-art .b8 { width: 120px; height: 120px; top: 52%; right: 3%; background: var(--green); transform: rotate(6deg); }
+.bg-art .b9 { width: 60px; height: 60px; top: 61%; right: 18%; background: var(--green); }
+.bg-art .b10 { width: 300px; height: 300px; top: 66%; right: -110px; background: var(--amethyst-soft); transform: rotate(12deg); }
+.bg-art .b11 { width: 240px; height: 240px; top: 76%; left: -70px; background: var(--green-soft); }
+.bg-art .b12 { width: 52px; height: 52px; top: 82%; right: 12%; background: var(--amethyst); transform: rotate(20deg); }
+.bg-art .b13 { width: 380px; height: 380px; top: 90%; right: -150px; background: var(--green-soft); }
+.bg-art .b14 { width: 90px; height: 90px; top: 94%; right: 28%; background: var(--amethyst); transform: rotate(-15deg); }
 
-.shape-dot {
-  width: 54px;
-  height: 54px;
-  top: 150px;
-  right: 120px;
-  border-radius: 50%;
-  background: var(--green);
-  opacity: 0.45;
-}
-
-.shape-frame {
-  width: 170px;
-  height: 170px;
-  top: 46vh;
-  right: -60px;
-  border: 2px solid var(--amethyst);
-  opacity: 0.16;
-  transform: rotate(14deg);
-}
-
-.shape-arch {
-  width: 300px;
-  height: 150px;
-  bottom: 0;
-  right: 4vw;
-  border-radius: 150px 150px 0 0;
-  background: var(--green);
-  opacity: 0.1;
-}
-
-.shape-line {
-  width: 240px;
-  height: 2px;
-  bottom: 30vh;
-  right: -40px;
-  background: var(--amethyst);
-  opacity: 0.25;
-  transform: rotate(-35deg);
-}
-
-.shape-quarter {
-  width: 260px;
-  height: 260px;
-  bottom: -1px;
-  left: 260px;
-  border-radius: 0 100% 0 0;
-  background: var(--amethyst);
-  opacity: 0.05;
-}
-
-.shape-grid {
-  width: 132px;
-  height: 132px;
-  top: 210px;
-  right: 30px;
-  background-image: radial-gradient(var(--amethyst) 2px, transparent 2.5px);
-  background-size: 22px 22px;
-  opacity: 0.22;
-}
-
-@media (max-width: 1400px) {
-  .shape-grid, .shape-line { display: none; }
-  .shape-sun { opacity: 0.05; }
-  .shape-dot { right: 40px; top: 110px; }
-  .shape-frame { right: -110px; }
+@media (max-width: 1100px) {
+  .bg-art .b3, .bg-art .b6, .bg-art .b9, .bg-art .b12 { display: none; }
 }
 
 @media (max-width: 768px) {
-  .shape-sun { width: 280px; height: 280px; top: -120px; right: -110px; }
-  .shape-frame, .shape-line, .shape-quarter { display: none; }
+  .bg-art .b2, .bg-art .b8, .bg-art .b14 { display: none; }
 }
 
 ::selection {
@@ -161,7 +110,7 @@ p {
 /* Skip link */
 .skip-link {
   position: absolute;
-  top: -40px;
+  top: -80px;
   left: 12px;
   background: var(--ink);
   color: #fff;
@@ -201,6 +150,7 @@ p {
   height: auto;
   display: block;
   flex-shrink: 0;
+  transform: translateY(-8px); /* sit the hair a touch higher than the name */
 }
 
 .sidebar-title {
