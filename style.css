@@ -309,25 +309,40 @@ section + section {
   transition: transform 0.4s;
 }
 
-/* Website screenshots sit in a light gold frame (the header ombre's horizon) that thickens on hover */
+/* Website screenshots and designs sit in a light gold frame (the header ombre's horizon) that thickens on hover */
 .project-media--site {
   background: var(--sky-horizon);
 }
 
 .project-media--site img {
-  padding: 6px;
-  border-radius: 10px;
+  padding: 2px;
+  border-radius: 4px;
   transition: transform 0.4s, padding 0.25s;
 }
 
 .project-card:hover .project-media--site img {
   transform: none;
-  padding: 14px;
+  padding: 5px;
 }
 
 /* Background-removed product shots sit whole on the light gold from the header ombre */
 .project-media--cutout {
+  position: relative;
   background: var(--sky-horizon);
+}
+
+/* The panel is already light gold, so its frame is the ombre's deeper gold, thickening on hover like the others */
+.project-media--cutout::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  box-shadow: inset 0 0 0 2px var(--sky-low);
+  pointer-events: none;
+  transition: box-shadow 0.25s;
+}
+
+.project-card:hover .project-media--cutout::after {
+  box-shadow: inset 0 0 0 5px var(--sky-low);
 }
 
 .project-media--cutout img {
