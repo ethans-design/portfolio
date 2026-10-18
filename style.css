@@ -15,16 +15,11 @@
   --muted: #9fb0a6;
   --gold: #f2c879;
 
-  /* Sky bands, top to bottom */
-  --sky-1: #0e3540;
-  --sky-2: #144551;
-  --sky-3: #1c5560;
-  --sky-4: #2a6669;
-  --sky-5: #3f7e78;
-  --sky-6: #6c967c;
-  --sky-7: #9c9c6c;
-  --sky-8: #c4a262;
-  --sky-9: #e2b86d;
+  /* Sky, top to bottom — an even dusk fade from deep teal to gold */
+  --sky-top: #0b2e3a;
+  --sky-mid: #2f6f73;
+  --sky-low: #c9a96a;
+  --sky-horizon: #f0c27a;
 
   --max: 1180px;
 }
@@ -89,20 +84,14 @@ h1 {
 }
 .skip-link:focus { top: 14px; }
 
-/* Header: solid sky bands with the mountain ridge laid over the bottom */
+/* Header: dusk sky with layered mountain ranges over the bottom */
 .site-header {
   position: relative;
   height: clamp(220px, 24vw, 320px);
   background: linear-gradient(180deg,
-    var(--sky-1) 0 12%,
-    var(--sky-2) 0 22%,
-    var(--sky-3) 0 31%,
-    var(--sky-4) 0 40%,
-    var(--sky-5) 0 49%,
-    var(--sky-6) 0 58%,
-    var(--sky-7) 0 67%,
-    var(--sky-8) 0 77%,
-    var(--sky-9) 0 100%);
+    var(--sky-top) 0%, var(--sky-mid) 38%, var(--sky-low) 64%, var(--sky-horizon) 82%);
+  background: linear-gradient(in oklab 180deg,
+    var(--sky-top) 0%, var(--sky-mid) 38%, var(--sky-low) 64%, var(--sky-horizon) 82%);
   overflow: hidden;
 }
 
@@ -112,8 +101,12 @@ h1 {
   bottom: -1px;
   width: 100%;
   height: 78%;
-  fill: var(--bg);
 }
+
+.ridge-far { fill: url(#far-fill); }
+.ridge-mid { fill: url(#mid-fill); }
+.ridge-front,
+.ridge-trees { fill: var(--bg); }
 
 .header-inner {
   position: relative;
