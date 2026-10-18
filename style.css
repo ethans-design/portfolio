@@ -315,14 +315,14 @@ section + section {
 }
 
 .project-media--site img {
-  padding: 6px;
-  border-radius: 10px;
+  padding: 2px;
+  border-radius: 4px;
   transition: transform 0.4s, padding 0.25s;
 }
 
 .project-card:hover .project-media--site img {
   transform: none;
-  padding: 14px;
+  padding: 5px;
 }
 
 /* Background-removed product shots sit whole on the light gold from the header ombre */
