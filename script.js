@@ -104,7 +104,7 @@ if (trail && ridgePath) {
   // Ground height along the ridge, smoothed so footsteps don't jitter
   const raw = [];
   ridgePath.getAttribute('d').replace(/L(\d+(?:\.\d+)?) (\d+(?:\.\d+)?)/g, (_, x, y) => {
-    raw[Math.round(+x)] = +y;
+    if (+y < 196) raw[Math.round(+x)] = +y;   // skip the corners that close the shape
   });
   const width = raw.length - 1;
   const ground = raw.map((_, i) => {
@@ -112,6 +112,11 @@ if (trail && ridgePath) {
     for (let j = i - 3; j <= i + 3; j++) if (raw[j] !== undefined) { sum += raw[j]; n++; }
     return sum / n;
   });
+  const rawAt = x => {
+    const i = Math.max(0, Math.min(width - 1, Math.floor(x)));
+    const t = x - i;
+    return raw[i] * (1 - t) + raw[i + 1] * t;
+  };
   const groundAt = x => {
     const i = Math.max(0, Math.min(width - 1, Math.floor(x)));
     const t = x - i;
@@ -130,7 +135,8 @@ if (trail && ridgePath) {
   // Camp: tent behind the hiker, fire in front
   const camp = make('g', { class: 'camp' }, trail);
   const tent = make('g', {}, camp);
-  make('path', { d: 'M-4.5 0L0 -6L4.5 0Z', class: 'trail-ink' }, tent);
+  // the base runs down into the mountain (same colour), so it never floats on uneven ground
+  make('path', { d: 'M-4.5 0L0 -6L4.5 0L4.5 6L-4.5 6Z', class: 'trail-ink' }, tent);
   make('path', { d: 'M-1.2 0L0 -3.4L1.2 0Z', class: 'tent-door' }, tent);
   const fire = make('g', {}, camp);
   const glow = make('circle', { r: 7, cy: -1.5, fill: 'url(#fire-glow)' }, fire);
@@ -172,13 +178,17 @@ if (trail && ridgePath) {
     setLine(armB, 0.15, shoulder, ...reach(0.15, shoulder, 2.8, swing * 0.8));
   }
 
-  const place = (el, x, scale = 1, tilt = 0) =>
-    el.setAttribute('transform', `translate(${x.toFixed(2)} ${groundAt(x).toFixed(2)}) rotate(${tilt.toFixed(1)}) scale(${scale.toFixed(3)})`);
+  const place = (el, x, scale = 1, tilt = 0, sink = 0, at = groundAt) =>
+    el.setAttribute('transform', `translate(${x.toFixed(2)} ${(at(x) + sink).toFixed(2)}) rotate(${tilt.toFixed(1)}) scale(${scale.toFixed(3)})`);
+
+  // Lean something to follow the ground between its two edges
+  const lean = (x, half) => Math.max(-8, Math.min(8,
+    Math.atan2(groundAt(x + half) - groundAt(x - half), half * 2) * 180 / Math.PI));
 
   // State machine: walk → pitch tent → light fire → rest → douse fire → pack tent → walk
   let x = rand(20, 120), phase = 0, campX = 0;
   let state = 'walk', t0 = 0, restFor = 0;
-  let nextStop = x + rand(110, 300);
+  let nextStop = x + rand(40, 200);
   let tentScale = 0, fireScale = 0;
 
   function go(next, now) { state = next; t0 = now; }
@@ -188,14 +198,13 @@ if (trail && ridgePath) {
 
     if (state === 'walk') {
       const slope = (groundAt(x + 1) - groundAt(x - 1)) / 2;
-      x += dt * 8 / (1 + Math.abs(slope) * 1.6);
-      phase += dt * 7;
+      x += dt * 12 / (1 + Math.abs(slope) * 1.6);
+      phase += dt * 9;
       if (x > width - 6) {           // reached the end of the range: start over on the left
-        x = 6; nextStop = rand(110, 300);
+        x = 6; nextStop = rand(40, 300);
       }
-      // Past the planned stop, he takes the first spot that's level enough,
-      // getting less picky the further he goes
-      if (x >= nextStop && bumpiness(x) < 4 + (x - nextStop) * 0.08) { campX = x; go('pitch', now); }
+      // Past the planned stop, he camps at the next spot that's level enough
+      if (x >= nextStop && bumpiness(x) < 5) { campX = x; go('pitch', now); }
       pose(phase, false);
       place(hiker, x, 1, Math.atan(slope) * 180 / Math.PI * 0.35);
     } else if (state === 'pitch') {
@@ -216,13 +225,14 @@ if (trail && ridgePath) {
     } else if (state === 'pack') {
       tentScale = 1 - ease(Math.min(1, since / 1.5));
       pose(0, false);
-      if (since >= 1.5) { nextStop = x + rand(110, 300); go('walk', now); }
+      if (since >= 1.5) { nextStop = x + rand(40, 300); go('walk', now); }
     }
 
     if (state !== 'walk') place(hiker, campX);
     camp.style.display = tentScale > 0 || fireScale > 0 ? '' : 'none';
-    place(tent, campX - 8, Math.max(tentScale, 0.001));
-    place(fire, campX + 5, Math.max(fireScale, 0.001));
+    // The tent leans a little with the slope and sits a touch into it
+    place(tent, campX - 8, Math.max(tentScale, 0.001), lean(campX - 8, 4.5), 0.6);
+    place(fire, campX + 5, Math.max(fireScale, 0.001), 0, 0.3, rawAt);   // the fire sits on the actual rock
 
     // Flicker the flames and drift a little smoke while the fire is going
     const flick = 0.85 + Math.sin(now / 90) * 0.08 + Math.random() * 0.1;
@@ -241,7 +251,7 @@ if (trail && ridgePath) {
   if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
     // No animation: he's already camped at a flat spot
     x = 140;
-    while (x < width - 20 && bumpiness(x) > 4.5) x++;
+    while (x < width - 20 && bumpiness(x) >= 5) x++;
     campX = x; tentScale = 1; fireScale = 1; state = 'rest'; restFor = Infinity;
     frame(0, 0);
   } else {
