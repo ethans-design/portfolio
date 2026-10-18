@@ -309,9 +309,25 @@ section + section {
   transition: transform 0.4s;
 }
 
-/* Background-removed product shots sit whole on a light panel */
+/* Website screenshots sit in a light gold frame (the header ombre's horizon) that thickens on hover */
+.project-media--site {
+  background: var(--sky-horizon);
+}
+
+.project-media--site img {
+  padding: 6px;
+  border-radius: 10px;
+  transition: transform 0.4s, padding 0.25s;
+}
+
+.project-card:hover .project-media--site img {
+  transform: none;
+  padding: 14px;
+}
+
+/* Background-removed product shots sit whole on the light gold from the header ombre */
 .project-media--cutout {
-  background: #f4f2f6;
+  background: var(--sky-horizon);
 }
 
 .project-media--cutout img {
