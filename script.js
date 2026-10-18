@@ -1,4 +1,4 @@
-// Smooth scrolling for sidebar links + focus target section
+// Smooth scrolling for nav links + focus target section
 document.querySelectorAll('.nav-link').forEach(link => {
   link.addEventListener('click', (e) => {
     e.preventDefault();
@@ -13,36 +13,33 @@ document.querySelectorAll('.nav-link').forEach(link => {
   });
 });
 
-// Projects dropdown toggle (keeps hover behavior, adds click for touch)
-const navGroup = document.querySelector('.nav-group');
-if (navGroup) {
-  const parent = navGroup.querySelector('.nav-parent');
-  parent.addEventListener('click', () => {
-    navGroup.classList.add('open');
-    parent.setAttribute('aria-expanded', 'true');
-  });
-}
+// Project filters: pick a category, pick it again to show everything
+const filters = document.querySelectorAll('.filter');
+const cards = document.querySelectorAll('.project-card');
 
-// Highlight the sidebar link for the section currently in view
+filters.forEach(btn => {
+  btn.addEventListener('click', () => {
+    const on = btn.getAttribute('aria-pressed') !== 'true';
+    filters.forEach(b => b.setAttribute('aria-pressed', 'false'));
+    btn.setAttribute('aria-pressed', String(on));
+    cards.forEach(card => {
+      card.hidden = on && card.dataset.category !== btn.dataset.filter;
+    });
+  });
+});
+
+// Highlight the nav link for the section currently in view
 const navLinks = document.querySelectorAll('.nav-link');
-const subIds = ['tools', 'games', 'designs', 'hardgoods'];
-const spyIds = ['about', ...subIds, 'skills'];
-const sections = spyIds
+const sections = ['about', 'projects', 'skills']
   .map(id => document.getElementById(id))
   .filter(Boolean);
 
-function setActiveSection(id) {
-  navLinks.forEach(link => {
-    link.classList.toggle('active', link.getAttribute('href') === '#' + id);
-  });
-  // Keep the projects parent lit while a subsection is in view
-  const parent = document.querySelector('.nav-parent');
-  if (parent) parent.classList.toggle('active', subIds.includes(id));
-}
-
 const sectionObserver = new IntersectionObserver((entries) => {
   entries.forEach(entry => {
-    if (entry.isIntersecting) setActiveSection(entry.target.id);
+    if (!entry.isIntersecting) return;
+    navLinks.forEach(link => {
+      link.classList.toggle('active', link.getAttribute('href') === '#' + entry.target.id);
+    });
   });
 }, { rootMargin: '-40% 0px -55% 0px' });
 
