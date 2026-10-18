@@ -84,7 +84,7 @@ h1 {
 }
 .skip-link:focus { top: 14px; }
 
-/* Header: dusk sky with layered mountain ranges over the bottom */
+/* Header: dusk sky with the mountain silhouette over the bottom */
 .site-header {
   position: relative;
   height: clamp(220px, 24vw, 320px);
@@ -103,9 +103,7 @@ h1 {
   height: 78%;
 }
 
-.ridge-mid { fill: url(#mid-fill); }
-.ridge-front,
-.ridge-trees { fill: var(--bg); }
+.ridge-front { fill: var(--bg); }
 
 .header-inner {
   position: relative;
