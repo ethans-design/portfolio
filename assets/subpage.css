@@ -49,9 +49,10 @@ input { cursor: text; }
 .sky-inner {
   max-width: 1260px;
   margin: 0 auto;
-  padding: 22px 40px 34px;
+  min-height: 200px;
+  padding: 22px 40px 0;
   display: flex;
-  align-items: center;
+  align-items: flex-start;
   justify-content: space-between;
   gap: 24px;
 }
@@ -65,7 +66,7 @@ input { cursor: text; }
 }
 
 .sky-mark {
-  width: 56px;
+  width: 74px;
   aspect-ratio: 400 / 294;
   background: currentColor;
   -webkit-mask: url("EthanFace-mark.png") center / contain no-repeat;
@@ -74,7 +75,7 @@ input { cursor: text; }
 
 .sky-name {
   font-family: "digibop", sans-serif;
-  font-size: 1.45rem;
+  font-size: 1.9rem;
   line-height: 0.95;
   text-transform: lowercase;
 }
@@ -84,6 +85,7 @@ input { cursor: text; }
   flex-wrap: wrap;
   justify-content: flex-end;
   gap: 8px 24px;
+  padding-top: 14px;
 }
 
 .sky-link {
@@ -102,10 +104,10 @@ input { cursor: text; }
 .sky-link.active { border-bottom-color: var(--site-gold); }
 
 @media (max-width: 700px) {
-  .sky-inner { padding: 16px 16px 24px; flex-direction: column; align-items: flex-start; gap: 10px; }
-  .sky-mark { width: 46px; }
-  .sky-name { font-size: 1.2rem; }
-  .sky-nav { justify-content: flex-start; gap: 6px 18px; }
+  .sky-inner { min-height: 170px; padding: 18px 16px 0; flex-direction: column; justify-content: flex-start; gap: 14px; }
+  .sky-mark { width: 58px; }
+  .sky-name { font-size: 1.5rem; }
+  .sky-nav { justify-content: flex-start; gap: 6px 22px; padding-top: 0; }
 }
 
 @media (prefers-reduced-motion: reduce) {
