@@ -309,9 +309,27 @@ section + section {
   transition: transform 0.4s;
 }
 
-/* Background-removed product shots sit whole on a light panel */
+/* Website screenshots get a thin gold frame that thickens on hover */
+.project-media--site {
+  position: relative;
+}
+
+.project-media--site::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  box-shadow: inset 0 0 0 1px rgba(242, 200, 121, 0.35);
+  pointer-events: none;
+  transition: box-shadow 0.25s;
+}
+
+.project-card:hover .project-media--site::after {
+  box-shadow: inset 0 0 0 4px var(--gold);
+}
+
+/* Background-removed product shots sit whole on the light gold from the header ombre */
 .project-media--cutout {
-  background: #f4f2f6;
+  background: var(--sky-horizon);
 }
 
 .project-media--cutout img {

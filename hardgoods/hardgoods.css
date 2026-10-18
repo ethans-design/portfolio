@@ -2,7 +2,7 @@
 
 :root {
   --bg: #102019;
-  --panel: #f4f2f6; /* background-removed shots sit on a light panel, as on the homepage */
+  --panel: var(--sky-horizon); /* background-removed shots sit on the light gold from the header ombre, as on the homepage */
   --ink: #dde4e0;
   --muted: #9fb0a6;
   --line: #243a2f;
