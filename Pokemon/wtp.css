@@ -1,48 +1,36 @@
 * { box-sizing: border-box; margin: 0; padding: 0; }
 
 :root {
-  --bg: #fff;
-  --card: #fff;
-  --card-soft: #f5f3f8;
-  --line: rgba(48, 26, 75, 0.12);
-  --text: #1d1626;
-  --muted: #6b6474;
-  --red: #301a4b;
-  --red-soft: #22123a;
-  --yellow: #3f6c51;
-  --good: #3f6c51;
-  --bad: #b3261e;
-  --amethyst: #301a4b;
+  --bg: #102019;
+  --card: #192d24;
+  --card-soft: #13261d;
+  --line: #243a2f;
+  --text: #dde4e0;
+  --muted: #9fb0a6;
+  --gold: #f2c879;
+  --gold-dark: #e3b562;
+  --good: #8fd6a0;
+  --bad: #ff8a7a;
+  --white: #fff;
 }
 
 body {
   background: var(--bg);
   color: var(--text);
-  font-family: "acumin-pro", system-ui, sans-serif;
+  font-family: "Nunito", sans-serif;
   min-height: 100vh;
 }
 
 :focus-visible {
-  outline: 2px solid var(--yellow);
+  outline: 2px solid var(--gold);
   outline-offset: 2px;
   border-radius: 4px;
 }
 
-/* Top bar */
-.topbar {
-  background: var(--card);
-  border-bottom: 1px solid var(--line);
-  padding: 16px 0;
-  color: var(--amethyst);
-}
-
-.topbar-inner {
+/* Page heading */
+.page-head {
   width: min(980px, 92%);
-  margin: 0 auto;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  gap: 12px;
+  margin: 28px auto 0;
 }
 
 .brand {
@@ -52,16 +40,16 @@ body {
 }
 
 .pokeball {
-  width: 28px;
-  height: 28px;
+  width: 32px;
+  height: 32px;
   border-radius: 50%;
   background: linear-gradient(
     to bottom,
-    var(--amethyst) 0 calc(50% - 1.5px),
-    var(--amethyst) calc(50% - 1.5px) calc(50% + 1.5px),
-    #fff calc(50% + 1.5px) 100%
+    var(--gold) 0 calc(50% - 1.5px),
+    var(--gold) calc(50% - 1.5px) calc(50% + 1.5px),
+    var(--bg) calc(50% + 1.5px) 100%
   );
-  border: 2px solid var(--amethyst);
+  border: 2px solid var(--gold);
   position: relative;
   flex-shrink: 0;
 }
@@ -75,39 +63,23 @@ body {
   width: 9px;
   height: 9px;
   border-radius: 50%;
-  background: #fff;
-  border: 2px solid var(--amethyst);
+  background: var(--bg);
+  border: 2px solid var(--gold);
 }
 
 h1 {
-  color: var(--amethyst);
-  font-size: 1.4rem;
-  font-weight: 800;
+  color: var(--white);
+  font-size: clamp(1.8rem, 4vw, 2.4rem);
+  font-weight: 900;
   letter-spacing: 0.02em;
   text-transform: lowercase;
 }
 
-.back {
-  color: var(--muted);
-  text-decoration: none;
-  font-weight: 700;
-  font-size: 0.9rem;
-  padding: 8px 12px;
-  border: 1px solid var(--line);
-  border-radius: 10px;
-  transition: color 0.2s, border-color 0.2s;
-  white-space: nowrap;
-}
-
-.back:hover {
-  color: var(--text);
-  border-color: var(--yellow);
-}
 
 /* Layout */
 .container {
   width: min(980px, 92%);
-  margin: 32px auto 64px;
+  margin: 20px auto 64px;
 }
 
 .game {
@@ -115,7 +87,7 @@ h1 {
   border: 1px solid var(--line);
   border-radius: 20px;
   overflow: hidden;
-  box-shadow: 0 20px 50px rgba(48, 26, 75, 0.08);
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.25);
 }
 
 @media (min-width: 820px) {
@@ -128,7 +100,7 @@ h1 {
 /* Screen */
 .screen {
   background:
-    radial-gradient(circle at 50% 45%, #e3eee7 0%, #f5f3f8 72%);
+    radial-gradient(circle at 50% 45%, #f6dda4 0%, #f0c27a 40%, #c9a96a 78%);
   border-right: 1px solid var(--line);
   display: flex;
   justify-content: center;
@@ -141,11 +113,11 @@ h1 {
   width: min(300px, 70vw);
   height: auto;
   transition: filter 0.35s ease;
-  filter: drop-shadow(0 14px 18px rgba(48, 26, 75, 0.25));
+  filter: drop-shadow(0 14px 18px rgba(16, 32, 25, 0.35));
 }
 
 #pokeImg.hidden-mon {
-  filter: brightness(0) drop-shadow(0 14px 18px rgba(48, 26, 75, 0.25));
+  filter: brightness(0) drop-shadow(0 14px 18px rgba(16, 32, 25, 0.35));
 }
 
 #pokeImg.loading {
@@ -193,8 +165,8 @@ h1 {
 
 .stat-value {
   font-size: 1.6rem;
-  font-weight: 800;
-  color: var(--amethyst);
+  font-weight: 900;
+  color: var(--white);
 }
 
 /* Generation selector */
@@ -233,19 +205,19 @@ h1 {
 }
 
 .gen-chip:hover {
-  border-color: var(--yellow);
+  border-color: var(--gold);
   color: var(--text);
 }
 
 .gen-chip.active {
-  background: var(--amethyst);
-  border-color: var(--amethyst);
-  color: #fff;
+  background: var(--gold);
+  border-color: var(--gold);
+  color: var(--bg);
 }
 
 .gen-chip--all.active {
   background: transparent;
-  color: var(--amethyst);
+  color: var(--gold);
 }
 
 /* Guess input */
@@ -280,7 +252,7 @@ input::placeholder { color: var(--muted); }
 
 input:focus {
   outline: none;
-  border-color: var(--yellow);
+  border-color: var(--gold);
 }
 
 input.shake {
@@ -313,19 +285,19 @@ input.shake {
 }
 
 .btn:hover:not(:disabled) {
-  border-color: var(--yellow);
+  border-color: var(--gold);
   transform: translateY(-1px);
 }
 
 .btn--primary {
-  background: var(--red);
-  border-color: var(--red);
-  color: #fff;
+  background: var(--gold);
+  border-color: var(--gold);
+  color: var(--bg);
 }
 
 .btn--primary:hover:not(:disabled) {
-  background: var(--red-soft);
-  border-color: var(--red-soft);
+  background: var(--gold-dark);
+  border-color: var(--gold-dark);
 }
 
 .btn--ghost {

@@ -9,16 +9,25 @@
   <link rel="stylesheet" href="project1.css" />
   <link rel="stylesheet" href="../assets/subpage.css" />
   <link rel="stylesheet" href="https://use.typekit.net/kjc2rnh.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Nunito:wght@600;800;900&amp;display=swap" />
 </head>
 <body>
-  <header class="topbar">
-    <div class="topbar-inner">
-      <h1>cowboys with swords</h1>
-      <a class="back" href="../index.html">← back to portfolio</a>
+  <header class="sky">
+    <div class="sky-inner">
+      <a class="sky-brand" href="../index.html" aria-label="Ethan Saunders, home">
+        <span class="sky-mark" aria-hidden="true"></span>
+        <span class="sky-name">ethan<br />saunders</span>
+      </a>
+      <nav class="sky-nav" aria-label="Page">
+        <a href="../index.html#projects" class="sky-link">← projects</a>
+      </nav>
     </div>
   </header>
 
   <main class="wrap">
+    <h1>cowboys with swords</h1>
     <canvas id="game" width="1280" height="720" aria-label="Cowboys with Swords — 2D platformer"></canvas>
     <div id="status" class="status">Loading…</div>
     <div class="hint">

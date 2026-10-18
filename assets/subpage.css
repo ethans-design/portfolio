@@ -1,45 +1,122 @@
-/* Shared look for project pages: palette, fonts, cursor and the homepage's
-   three stripes down the right side. Load it after the
-   page's own stylesheet. */
+/* Shared look for project pages, matching the homepage: forest green, gold
+   accent, Nunito type and a short dusk-sky header with the mountain ridge.
+   Load it after the page's own stylesheet. */
 
 :root {
-  --site-bg: #fff;
-  --site-amethyst: #301a4b;
-  --site-green: #3f6c51;
+  --site-bg: #102019;
+  --site-card: #192d24;
+  --site-card-hover: #1e3529;
+  --site-line: #243a2f;
+  --site-text: #dde4e0;
+  --site-muted: #9fb0a6;
+  --site-gold: #f2c879;
+
+  --sky-top: #0b2e3a;
+  --sky-mid: #2f6f73;
+  --sky-low: #c9a96a;
+  --sky-horizon: #f0c27a;
 }
 
 body {
-  position: relative;
-  display: flow-root;
   background: var(--site-bg);
-  font-family: "acumin-pro", system-ui, sans-serif;
+  color: var(--site-text);
+  font-family: "Nunito", sans-serif;
+  font-weight: 600;
   cursor: url("cursor.png") 3 2, auto;
-  padding: 0 106px 0 0;
   min-height: 100vh;
 }
 
-h1, h2, h3 { font-family: "digibop", sans-serif; }
-
-body::after {
-  content: "";
-  position: absolute;
-  top: 0;
-  right: 40px;
-  bottom: 0;
-  width: 46px;
-  pointer-events: none;
-  z-index: 60;
-  background: linear-gradient(90deg, var(--site-green) 0 10px, transparent 0 18px, var(--site-green) 0 28px, transparent 0 36px, var(--site-amethyst) 0 46px);
+h1, h2, h3, h4 {
+  font-family: "Nunito", sans-serif;
+  font-weight: 900;
+  text-transform: lowercase;
+  color: #fff;
 }
+
+::selection { background: var(--site-gold); color: var(--site-bg); }
+
+:focus-visible { outline: 2px solid var(--site-gold); outline-offset: 3px; border-radius: 4px; }
 
 a, button, .chip, .gen-chip { cursor: pointer; }
 input { cursor: text; }
 
-@media (max-width: 768px) {
-  body { padding: 0 46px 0 0; }
-  body::after {
-    right: 14px;
-    width: 23px;
-    background: linear-gradient(90deg, var(--site-green) 0 5px, transparent 0 9px, var(--site-green) 0 14px, transparent 0 18px, var(--site-amethyst) 0 23px);
-  }
+/* Header: the homepage sky and ridge, cut down to a band */
+.sky {
+  position: relative;
+  height: clamp(150px, 15vw, 210px);
+  background:
+    url("ridge.svg") center bottom / auto 86% no-repeat,
+    linear-gradient(180deg, var(--sky-top) 0%, var(--sky-mid) 38%, var(--sky-low) 64%, var(--sky-horizon) 82%);
+  background:
+    url("ridge.svg") center bottom / auto 86% no-repeat,
+    linear-gradient(in oklab 180deg, var(--sky-top) 0%, var(--sky-mid) 38%, var(--sky-low) 64%, var(--sky-horizon) 82%);
+  margin-bottom: -1px; /* no hairline between the ridge and the page */
+}
+
+.sky-inner {
+  max-width: 1260px;
+  margin: 0 auto;
+  padding: 18px 40px 0;
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 24px;
+}
+
+.sky-brand {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  color: var(--site-gold);
+  text-decoration: none;
+}
+
+.sky-mark {
+  width: 56px;
+  aspect-ratio: 400 / 294;
+  background: currentColor;
+  -webkit-mask: url("EthanFace-mark.png") center / contain no-repeat;
+  mask: url("EthanFace-mark.png") center / contain no-repeat;
+}
+
+.sky-name {
+  font-family: "digibop", sans-serif;
+  font-size: 1.45rem;
+  line-height: 0.95;
+  text-transform: lowercase;
+}
+
+.sky-nav {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+  gap: 8px 24px;
+  padding-top: 10px;
+}
+
+.sky-link {
+  font-family: "Nunito", sans-serif;
+  font-weight: 800;
+  font-size: 0.95rem;
+  color: #fff;
+  text-decoration: none;
+  text-transform: lowercase;
+  padding-bottom: 3px;
+  border-bottom: 2px solid transparent;
+  transition: color 0.2s, border-color 0.2s;
+}
+
+.sky-link:hover { color: var(--site-gold); }
+.sky-link.active { border-bottom-color: var(--site-gold); }
+
+@media (max-width: 700px) {
+  .sky { height: 170px; background-size: auto 60%, auto; }
+  .sky-inner { padding: 14px 16px 0; flex-direction: column; gap: 10px; }
+  .sky-mark { width: 46px; }
+  .sky-name { font-size: 1.2rem; }
+  .sky-nav { justify-content: flex-start; gap: 6px 18px; padding-top: 0; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .sky-link { transition: none; }
 }
