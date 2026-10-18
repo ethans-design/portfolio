@@ -1,5 +1,5 @@
 /* Shared look for project pages, matching the homepage: forest green, gold
-   accent, Nunito type and a short dusk-sky header with the mountain ridge.
+   accent, Nunito type and a short dusk ombre header.
    Load it after the page's own stylesheet. */
 
 :root {
@@ -40,25 +40,18 @@ h1, h2, h3, h4 {
 a, button, .chip, .gen-chip { cursor: pointer; }
 input { cursor: text; }
 
-/* Header: the homepage sky and ridge, cut down to a band */
+/* Header: a plain band of the homepage's dusk ombre */
 .sky {
-  position: relative;
-  height: clamp(150px, 15vw, 210px);
-  background:
-    url("ridge.svg") center bottom / auto 86% no-repeat,
-    linear-gradient(180deg, var(--sky-top) 0%, var(--sky-mid) 38%, var(--sky-low) 64%, var(--sky-horizon) 82%);
-  background:
-    url("ridge.svg") center bottom / auto 86% no-repeat,
-    linear-gradient(in oklab 180deg, var(--sky-top) 0%, var(--sky-mid) 38%, var(--sky-low) 64%, var(--sky-horizon) 82%);
-  margin-bottom: -1px; /* no hairline between the ridge and the page */
+  background: linear-gradient(180deg, var(--sky-top) 0%, var(--sky-mid) 45%, var(--sky-low) 78%, var(--sky-horizon) 100%);
+  background: linear-gradient(in oklab 180deg, var(--sky-top) 0%, var(--sky-mid) 45%, var(--sky-low) 78%, var(--sky-horizon) 100%);
 }
 
 .sky-inner {
   max-width: 1260px;
   margin: 0 auto;
-  padding: 18px 40px 0;
+  padding: 22px 40px 34px;
   display: flex;
-  align-items: flex-start;
+  align-items: center;
   justify-content: space-between;
   gap: 24px;
 }
@@ -91,7 +84,6 @@ input { cursor: text; }
   flex-wrap: wrap;
   justify-content: flex-end;
   gap: 8px 24px;
-  padding-top: 10px;
 }
 
 .sky-link {
@@ -110,11 +102,10 @@ input { cursor: text; }
 .sky-link.active { border-bottom-color: var(--site-gold); }
 
 @media (max-width: 700px) {
-  .sky { height: 170px; background-size: auto 60%, auto; }
-  .sky-inner { padding: 14px 16px 0; flex-direction: column; gap: 10px; }
+  .sky-inner { padding: 16px 16px 24px; flex-direction: column; align-items: flex-start; gap: 10px; }
   .sky-mark { width: 46px; }
   .sky-name { font-size: 1.2rem; }
-  .sky-nav { justify-content: flex-start; gap: 6px 18px; padding-top: 0; }
+  .sky-nav { justify-content: flex-start; gap: 6px 18px; }
 }
 
 @media (prefers-reduced-motion: reduce) {
