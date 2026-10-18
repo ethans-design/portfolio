@@ -87,7 +87,7 @@ h1 {
 /* Header: dusk sky with the mountain silhouette over the bottom */
 .site-header {
   position: relative;
-  height: clamp(220px, 24vw, 320px);
+  height: max(220px, calc(100vw / 6 + 90px));
   background: linear-gradient(180deg,
     var(--sky-top) 0%, var(--sky-mid) 38%, var(--sky-low) 64%, var(--sky-horizon) 82%);
   background: linear-gradient(in oklab 180deg,
@@ -100,7 +100,7 @@ h1 {
   left: 0;
   bottom: -1px;
   width: 100%;
-  height: 78%;
+  aspect-ratio: 6 / 1; /* the traced skyline keeps the photo's proportions */
 }
 
 .ridge-front { fill: var(--bg); }
@@ -440,7 +440,8 @@ section + section {
   }
 
   .ridge {
-    height: 55%;
+    height: 150px; /* narrow screens show the middle of the range around the Grand */
+    aspect-ratio: auto;
   }
 
   .brand-mark { width: 58px; }
