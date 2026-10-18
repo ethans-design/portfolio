@@ -150,7 +150,9 @@ if (trail && ridgePath) {
   const head = make('circle', { r: 1.25, class: 'trail-ink' }, hiker);
   const pack = make('rect', { width: 1.9, height: 3.2, rx: 0.5, class: 'trail-ink' }, hiker);
   const limb = () => make('line', { class: 'trail-ink limb' }, hiker);
-  const torso = limb(), armA = limb(), armB = limb(), legA = limb(), legB = limb();
+  const torso = limb(), armA = limb(), armB = limb(), legA = limb(), legB = limb(), shin = limb();
+  // Camp stool, only used when the ground under his seat dips below where his feet rest
+  const stool = make('path', { class: 'trail-ink limb' }, hiker);
 
   const setLine = (el, x1, y1, x2, y2) => {
     el.setAttribute('x1', x1); el.setAttribute('y1', y1);
@@ -159,13 +161,27 @@ if (trail && ridgePath) {
   const reach = (x, y, len, angle) => [x + Math.sin(angle) * len, y + Math.cos(angle) * len];
 
   function pose(phase, sit) {
+    shin.style.display = sit ? '' : 'none';
+    stool.style.display = 'none';
     if (sit) {
-      const hip = -1.8;
+      // Everything is measured from the actual rock under his seat, so he never floats:
+      // he sits right on it, his feet reach the rock in front, and if that rock is
+      // higher than his seat he gets a stool to sit on instead
+      const seat = rawAt(campX);
+      const footY = Math.max(-4.5, Math.min(4.5, rawAt(campX + 3) - seat));
+      const lift = footY < -1.2 ? -footY - 0.4 : 0;
+      const hip = -0.7 - lift;
+      if (lift) {
+        stool.style.display = '';
+        stool.setAttribute('d', `M-1.3 ${hip + 0.6}H1.3M-1 ${hip + 0.6}L1 4M1 ${hip + 0.6}L-1 4`);
+      }
       setLine(torso, 0, hip, -0.3, hip - 3.6);
-      head.setAttribute('cx', 0); head.setAttribute('cy', hip - 5);
-      pack.setAttribute('x', -3.6); pack.setAttribute('y', -3.2);   // set down beside him
-      setLine(legA, 0, hip, 2.2, hip - 0.4); setLine(legB, 2.2, hip - 0.4, 2.8, 0);
-      setLine(armA, -0.2, hip - 2.8, 1.8, hip - 1.4); setLine(armB, -0.2, hip - 2.8, 1.6, hip - 1.8);
+      head.setAttribute('cx', -0.1); head.setAttribute('cy', hip - 5);
+      setLine(legA, 0, hip, 2.1, hip - 1.1); setLine(shin, 2.1, hip - 1.1, 3, footY);
+      setLine(legB, 0, hip, 1.9, hip - 0.9);
+      pack.setAttribute('x', -3.8);
+      pack.setAttribute('y', (rawAt(campX - 2.9) - seat - 3.2).toFixed(2));   // set down on the rock beside him
+      setLine(armA, -0.2, hip - 2.8, 1.8, hip - 1.6); setLine(armB, -0.2, hip - 2.8, 1.6, hip - 2);
       return;
     }
     const hip = -3.7, shoulder = -6.6, swing = Math.sin(phase) * 0.55;
@@ -228,7 +244,7 @@ if (trail && ridgePath) {
       if (since >= 1.5) { nextStop = x + rand(40, 300); go('walk', now); }
     }
 
-    if (state !== 'walk') place(hiker, campX);
+    if (state !== 'walk') place(hiker, campX, 1, 0, 0, rawAt);   // stand and sit on the actual rock at camp
     camp.style.display = tentScale > 0 || fireScale > 0 ? '' : 'none';
     // The tent leans a little with the slope and sits a touch into it
     place(tent, campX - 8, Math.max(tentScale, 0.001), lean(campX - 8, 4.5), 0.6);
