@@ -2,59 +2,27 @@
 html, body {
   margin: 0;
   padding: 0;
-  background: #fff;
-  color: #1d1626;
-  font-family: "acumin-pro", system-ui, sans-serif;
+  background: #102019;
+  color: #dde4e0;
+  font-family: "Nunito", sans-serif;
   box-sizing: border-box;
 }
 
-.topbar {
-  background: #fff;
-  border-bottom: 1px solid rgba(48, 26, 75, 0.12);
-  padding: 14px 0;
-}
-
-.topbar-inner {
-  width: min(1280px, 92%);
-  margin: 0 auto;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  gap: 12px;
-}
-
 h1 {
+  width: min(1280px, 100%);
   margin: 0;
-  font-size: 1.3rem;
-  font-weight: 800;
+  font-size: clamp(1.6rem, 3.4vw, 2.2rem);
+  font-weight: 900;
   text-transform: lowercase;
-  color: #301a4b;
-}
-
-.back {
-  color: #6b6474;
-  text-decoration: none;
-  font-weight: 700;
-  font-size: 0.9rem;
-  padding: 8px 12px;
-  border: 1px solid rgba(48, 26, 75, 0.12);
-  border-radius: 10px;
-  transition: color 0.2s, border-color 0.2s;
-  white-space: nowrap;
-}
-
-.back:hover {
-  color: #301a4b;
-  border-color: #301a4b;
+  color: #fff;
 }
 
 .wrap {
-  min-height: calc(100vh - 80px);
   display: grid;
   place-items: center;
   align-content: center;
   gap: 10px;
-  padding: 16px;
+  padding: 16px 16px 48px;
 }
 
 #game {
@@ -62,7 +30,8 @@ h1 {
   height: auto;
   aspect-ratio: 16 / 9;
   border-radius: 14px;
-  box-shadow: 0 20px 50px rgba(48, 26, 75, 0.2);
+  border: 1px solid #243a2f;
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.4);
   image-rendering: pixelated;
   image-rendering: crisp-edges;
   background: #0b0e14;
@@ -76,8 +45,8 @@ h1 {
 
 .hint {
   width: min(1280px, 100%);
-  opacity: 0.65;
+  color: #9fb0a6;
   font-size: 13px;
 }
 
-.hint b { color: #3f6c51; }
+.hint b { color: #f2c879; }
