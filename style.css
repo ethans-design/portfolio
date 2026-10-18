@@ -552,3 +552,26 @@ section + section {
     animation: none !important;
   }
 }
+
+/* Hiker, tent and campfire on the ridge */
+.trail-ink {
+  fill: var(--bg);
+  stroke: var(--bg);
+  stroke-width: 0.3;
+}
+
+.trail .limb,
+.trail .logs {
+  stroke-width: 1.05;
+  stroke-linecap: round;
+  fill: none;
+}
+
+.tent-door {
+  fill: #f2c879;
+  opacity: 0.55;
+}
+
+.flame { fill: #e8873e; }
+.flame-core { fill: #f6d58e; }
+.smoke { fill: #c9d3cf; }
