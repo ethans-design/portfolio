@@ -124,6 +124,9 @@ main { padding: 46px clamp(24px, 5vw, 64px) 100px; min-width: 0; }
 .media-grid.videos { grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); margin-top: 18px; }
 .slot video { background: #000; border: 1px solid var(--line); max-height: 70vh; object-fit: contain; }
 
+/* IDC1 — portrait photo + video */
+.media-grid.idc1 { grid-template-columns: repeat(auto-fill, minmax(260px, 380px)); margin-top: 18px; align-items: start; }
+
 /* Enclosures — photos */
 .media-grid.enclosures { grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); margin-top: 18px; max-width: 980px; }
 .slot img { border: 1px solid var(--line); }
