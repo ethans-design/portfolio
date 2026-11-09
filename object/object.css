@@ -135,6 +135,9 @@ main { padding: 46px clamp(24px, 5vw, 64px) 100px; min-width: 0; }
 }
 .parts li b { color: var(--gold); font-weight: 800; margin-right: 6px; }
 
+/* IDC2 — sketch */
+.media-grid.idc2 { grid-template-columns: minmax(0, 520px); margin-top: 24px; }
+
 /* IDC1 — portrait photo + videos */
 .media-grid.idc1 { grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); margin-top: 18px; max-width: 980px; align-items: start; }
 
