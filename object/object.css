@@ -133,6 +133,8 @@ main { padding: 46px clamp(24px, 5vw, 64px) 100px; min-width: 0; }
   background: var(--panel); border: 1px solid var(--line); border-radius: 999px;
   padding: 6px 14px; font-size: 0.92rem; color: var(--text);
 }
+.proposal a, .parts a { color: var(--gold); text-decoration: underline; text-underline-offset: 3px; }
+.proposal a:hover, .parts a:hover { color: var(--white); }
 .parts li b { color: var(--gold); font-weight: 800; margin-right: 6px; }
 
 /* IDC2 — sketch */
