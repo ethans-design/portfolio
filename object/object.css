@@ -127,6 +127,13 @@ main { padding: 46px clamp(24px, 5vw, 64px) 100px; min-width: 0; }
 /* IDC2 — proposal text */
 .proposal { max-width: 720px; margin-top: 12px; }
 .proposal p { color: var(--muted); font-size: 1.05rem; line-height: 1.7; }
+.proposal p + p { margin-top: 14px; }
+.parts { list-style: none; display: flex; flex-wrap: wrap; gap: 10px; margin-top: 20px; }
+.parts li {
+  background: var(--panel); border: 1px solid var(--line); border-radius: 999px;
+  padding: 6px 14px; font-size: 0.92rem; color: var(--text);
+}
+.parts li b { color: var(--gold); font-weight: 800; margin-right: 6px; }
 
 /* IDC1 — portrait photo + videos */
 .media-grid.idc1 { grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); margin-top: 18px; max-width: 980px; align-items: start; }
